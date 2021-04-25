@@ -33,4 +33,4 @@ kubectl create -f cafe-secret.yaml
 kubectl create -f cafe-ingress.yaml
 
 kubectl get svc -n nginx-ingress
-echo "\n\n\nRun dig <hostname>.us-west-2.elb.amazonaws.com to get public IP address of AWS LB. Impt: Wait 30s-45s for AWS DNS to update."
+echo "\n\n\nRun dig <hostname>.us-west-2.elb.amazonaws.com to get public IP address of AWS LB. Impt: Wait 30s-60s for AWS DNS to update."
