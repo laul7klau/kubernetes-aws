@@ -33,4 +33,4 @@ kubectl create -f cafe-secret.yaml
 kubectl create -f cafe-ingress.yaml
 
 kubectl get svc -n nginx-ingress
-echo "Run nslookup <hostname>.us-west-2.elb.amazonaws.com to get public IP address of AWS LB."
+echo "\n\n\nRun nslookup <hostname>.us-west-2.elb.amazonaws.com to get public IP address of AWS LB."
