@@ -5,8 +5,8 @@ git checkout v1.11.1
 #Set up files
 cp ../examples/complete-example/cafe.yaml .
 cp ../examples/complete-example/cafe-secret.yaml .
-wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/nginx/cafe-ingress.yaml
-wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/nginx/nginx-config.yaml
+wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/nginx/config/cafe-ingress.yaml
+wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/nginx/config/nginx-config.yaml
 #Install Ingress Controller per https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/
 kubectl apply -f common/ns-and-sa.yaml
 kubectl apply -f rbac/rbac.yaml
