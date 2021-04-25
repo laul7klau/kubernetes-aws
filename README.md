@@ -12,6 +12,7 @@ This section describes the steps to deploy a Kubernetes cluster on AWS based on 
 
 ## Steps:
 1. View *kube-cluster.yaml* which contains the basic configuration for a cluster on AWS. Make changes as appropriate.
-2. Create the cluster by entering:
-*eksctl create cluster -f kube-cluster.yaml*
+2. Create the cluster by entering:  
+*eksctl create cluster -f kube-cluster.yaml*. 
+
 The cluster creation process on AWS will typically take 25-30mins. 
