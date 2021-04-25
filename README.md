@@ -23,7 +23,8 @@ The following Kubernetes objects are created by the default kube-cluster.yaml.
 - 2 public nodes as BIG-IP instances. External IP addresses assigned.
 - 1 private node as BIG-IP instance.
 
-```$ kubectl $ kc get all -n kube-system
+```  
+$ kubectl $ kubectl get all -n kube-system
 NAME                           READY   STATUS    RESTARTS   AGE
 pod/aws-node-fmf9h             1/1     Running   0          29h
 pod/aws-node-ms9ts             1/1     Running   0          29h
