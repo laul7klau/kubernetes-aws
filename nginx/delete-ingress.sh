@@ -1,4 +1,5 @@
 #!/bin/sh
+#Pre-requisites: You are in the same root directory after creating the ingress controller from the create-ingress.sh script.
 cd kubernetes-ingress/deployments
 kubectl delete -f cafe-ingress.yaml
 kubectl delete -f cafe-secret.yaml
