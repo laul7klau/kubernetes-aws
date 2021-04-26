@@ -28,6 +28,12 @@ The following Kubernetes objects are created by the default kube-cluster.yaml.
 - 1 private node as AWS instance.
 
 ```  
+$ kubectl get nodes
+NAME                                           STATUS   ROLES    AGE   VERSION
+ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0
+ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0
+ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0
+
 $ kubectl get all -n kube-system
 NAME                           READY   STATUS    RESTARTS   AGE
 pod/aws-node-fmf9h             1/1     Running   0          29h
