@@ -1,0 +1,60 @@
+# A ClusterConfig object:
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: azkubecluster 
+  region: us-west-2 #If you modify this, modify the ami value for each nodegroup too. Current ami value is for us-west-2
+  tags:
+    deployment: eks-quick-deployment
+
+nodeGroups:
+  - name: nodegrp-public
+    iam:
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+        - arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess
+    instanceType: t3a.medium  #If you modify this, ensure the amiID below supports this instanceType.
+    desiredCapacity: 2
+    ssh: # import inline public key to allow SSH access to nodes, eksctl imports ~/.ssh/id_rsa.pub by default
+      allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key.
+      #publicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqZEd[...] user@hostname" #Uncomment allow line above if using this.
+    labels:
+      nodegroup-type: public 
+    minSize: 2
+    maxSize: 3
+    #ami: ami-0518bb0e75d3619ca # Ensure this is available to the region and AZs if you set this. Or nodes will not be created and deployment fails.
+    amiFamily: AmazonLinux2
+    availabilityZones: ["us-west-2a"] # use single AZ to optimise data transfer between instances
+
+  - name: nodegrp-private
+    iam:
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+        - arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess
+    instanceType: t3a.medium  #If you modify this, ensure the amiID below supports this instanceType.
+    desiredCapacity: 1
+    ssh: # import inline public key to allow SSH access to nodes, eksctl imports ~/.ssh/id_rsa.pub by default
+      allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key.
+      #publicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqZEd[...] user@hostname" #Uncomment allow line above if using this.
+    labels:
+      nodegroup-type: private 
+    privateNetworking: true
+    minSize: 1
+    maxSize: 1
+    #ami: ami-0518bb0e75d3619ca
+    amiFamily: AmazonLinux2
+    availabilityZones: ["us-west-2a"] # use single AZ to optimise data transfer between instances
+
+# cluster AZs must be set explicitly for single AZ nodegroup example to work
+availabilityZones: ["us-west-2a", "us-west-2b"]
+
+#cloudWatch:
+    #clusterLogging:
+        ## enable specific types of cluster control plane logs
+        #enableTypes: ["audit", "authenticator", "controllerManager"]
+        ## all supported types: "api", "audit", "authenticator", "controllerManager", "scheduler"
+        ## supported special values: "*" and "all"
