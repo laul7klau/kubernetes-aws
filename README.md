@@ -6,7 +6,7 @@ This section describes the steps to deploy a Kubernetes cluster on AWS based on 
 2. Configure your AWS credentials.
    - Go to IAM role > Users > <User> > Security Credentials, select **Create access key**.
    - Enter *aws configure*
-3. Generate SSH key pair. The key is referenced by kube-cluster.yanl to enable login to kubernetes nodes.
+3. Generate SSH key pair. The key is referenced by kube-cluster.yaml to enable login to kubernetes nodes.
    - Enter: *ssh-keygen*
 4. Install **eksctl** on your client device to manage the k8 cluster. Refer to [Installing eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html).
 
