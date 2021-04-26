@@ -17,7 +17,7 @@ This section describes the steps to deploy a Kubernetes cluster on AWS based on 
 3. Set up the kubernetes dashboard.  
    - chmod u+x setup-dashboard.sh
    - ./setup-dashboard.sh
-   - Access the dashboard using the link in the output of the script.
+   - Access the dashboard using the link and token from the output of the script.
 
 The cluster creation process on AWS will typically take 25-30mins. 
 
