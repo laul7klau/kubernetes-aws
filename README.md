@@ -24,8 +24,8 @@ The cluster creation process on AWS will typically take 25-30mins.
 ## Verification:
 The following Kubernetes objects are created by the default kube-cluster.yaml.
 - 1 Kubernetes cluster.
-- 2 public nodes as BIG-IP instances. External IP addresses assigned.
-- 1 private node as BIG-IP instance.
+- 2 public nodes as AWS instances. External IP addresses assigned.
+- 1 private node as AWS instance.
 
 ```  
 $ kubectl get all -n kube-system
