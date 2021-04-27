@@ -6,7 +6,7 @@ This is a step by step guide to deploy BIG-IP Controller Ingress Service CIS
 You have performed the steps in the previous directory to create a Kubernetes cluster in AWS.
 
 ## Steps  
-### Create the BIG-IP instance
+#### Create the BIG-IP instance
 1. From the K8 cluster created, gather and record down the following information:
    - **VPC:** ID where eksctl deployed the k8 cluster. Go to Services > VPC
    - **Subnet ID:** to deploy the BIG-IP instance. Go to Services > Subnets. Example: Subnet ID of  eksctl-<name>-cluster/SubnetPublicUSWEST2A
@@ -34,7 +34,7 @@ You have performed the steps in the previous directory to create a Kubernetes cl
    - Login to BIG-IP GUI *https://<BIG-IP IP>:8443*
    - Verify AS3 is installed at *iApps* > *Package Managment LX*. See "*f5-appsvcs*"
 
-## For CIS NodePort mode deployment:
+### For CIS NodePort mode deployment:
 - Fill in the value of "--bigip-url" in cis-deployment.yaml with the "Private IPv4 address" of the BIG-IP instance.
 - Fill in the value of the "virtualAddresses" value in the as3.yaml file. This is the IP address of the virtual server on the BIG-IP.
 - Add the security group (eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX0 to the BIG-IP instance.  
@@ -45,7 +45,7 @@ You have performed the steps in the previous directory to create a Kubernetes cl
   5. Add Security group. 
   6. Save.
 
-## Create and deploy CIS
+### Create and deploy CIS
 Replace the ???? chars in the next line with the your BIG-IP password. 
 ``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``  
 Copy and paste the following commands:  
