@@ -72,9 +72,9 @@ BIG-IP Controller Ingress Service is deployed.
   - New partition with virtual server, pool, and the Kubernetes nodes as pool members.  
 - The BIG-IP Controller is deployed as a pod in the kube-system namespace.  
   $ kubectl get pods -n kube-system  
-  *NAME                                         READY   STATUS    RESTARTS   AGE   
+  NAME                                         READY   STATUS    RESTARTS   AGE   
   [...]   
-  *k8s-bigip-ctlr-deployment-7f56b674ff-lj5kk   1/1     Running   0          85s  
+  k8s-bigip-ctlr-deployment-7f56b674ff-lj5kk   1/1     Running   0          85s  
   [...]   
 
 ## Destroy
@@ -89,6 +89,6 @@ BIG-IP Controller Ingress Service is deployed.
 ``kubectl delete serviceaccount bigip-ctlr -n kube-system``  
 ``kubectl delete secret f5-bigip-ctlr-login -n kube-system``  
 
-On AWS portal, destroy the BIG-IP stack.  
-- Go to CloudFormation > Stacks > Name-of-Stack, 
-- *Delete*
+2. On AWS portal, destroy the BIG-IP stack.  
+   - Go to CloudFormation > Stacks > Name-of-Stack, 
+   - *Delete*
