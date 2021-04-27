@@ -46,9 +46,9 @@ You have performed the steps in the previous directory to create a Kubernetes cl
   6. Save.
 
 ## Create and deploy CIS
-Copy and paste the following commands:  
-***Important**:  Replace the ???? chars in the next line with the your BIG-IP password.*   
+Replace the ???? chars in the next line with the your BIG-IP password. 
 ``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``  
+Copy and paste the following commands:  
 ``kubectl create serviceaccount bigip-ctlr -n kube-system``  
 ``kubectl create -f k8s-rbac.yaml``  
 ``kubectl create -f customresourcedefinitions.yaml``  
@@ -66,7 +66,13 @@ BIG-IP Controller Ingress Service is deployed.
 ## Verification:
 - Access the BIG-IP virtual server: http://??bigip external IP address??   
 - The following should be configured on the BIG-IP:
-  - new partition with virtual servere, pool, and the Kubernetes nodes as pool members.
+  - New partition with virtual server, pool, and the Kubernetes nodes as pool members.  
+- The BIG-IP Controller is deployed as a pod in the kube-system namespace.
+``$ kubectl get pods -n kube-system
+NAME                                         READY   STATUS    RESTARTS   AGE
+[...]
+k8s-bigip-ctlr-deployment-7f56b674ff-lj5kk   1/1     Running   0          85s
+[...]``  
 
 ## Destroy
 Copy and paste the following commands:  
