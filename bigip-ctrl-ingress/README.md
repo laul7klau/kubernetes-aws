@@ -52,7 +52,7 @@ Visit the link in your error message to accept the terms and subscribe. This is 
   5. Add Security group. 
   6. Save.
 
-#### Perform this for CIS clusterIP deployment
+#### [Perform this only for CIS clusterIP deployment]
 Enter the following commands to create the VXLAN config on the BIG-IP:  
 
 ``tmsh create net tunnels vxlan fl-vxlan port 8472 flooding-type none``   
@@ -60,7 +60,8 @@ Enter the following commands to create the VXLAN config on the BIG-IP:
 ``tmsh create net self 10.244.20.91 address 10.244.20.91/255.255.0.0 allow-service none vlan fl-vxlan``   
 
 View the resources created on the BIG-IP at **Network > Tunnels** and **Network > Self IP**   
-#### Create and deploy CIS
+
+#### Create and deploy BIG-IP Controller Ingress Service and application pods.  
 1. Replace the ???? chars in the next line with the your BIG-IP password. 
 
 ``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``  
