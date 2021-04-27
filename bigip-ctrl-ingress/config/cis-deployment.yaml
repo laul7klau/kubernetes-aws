@@ -41,7 +41,7 @@ spec:
             # https://clouddocs.f5.com/containers/latest/
             "--bigip-username=$(BIGIP_USERNAME)",
             "--bigip-password=$(BIGIP_PASSWORD)",
-            "--bigip-url=https://192.168.16.123:8443", #Fill this with the mgmt IP address of the bigip. Use https://IP:8443 for single NIC.
+            "--bigip-url=https://???bigip-mgmtIP???:8443", #Fill this with the mgmt IP address of the bigip. Use https://IP:8443 for single NIC.
             "--bigip-partition=cispartition",  #Fill this with the name of the "create auth partition <cis_managed_partition>" you created previously.
             "--pool-member-type=nodeport",
             "--insecure",
