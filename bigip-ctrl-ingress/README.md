@@ -48,7 +48,7 @@ You have performed the steps in the previous directory to create a Kubernetes cl
 ## Create and deploy CIS
 Copy and paste the following commands:  
 ***Important**:  Replace the ???? chars in the next line with the your BIG-IP password.*   
-``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``
+``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``  
 ``kubectl create serviceaccount bigip-ctlr -n kube-system``  
 ``kubectl create -f k8s-rbac.yaml``  
 ``kubectl create -f customresourcedefinitions.yaml``  
