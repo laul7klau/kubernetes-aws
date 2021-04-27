@@ -64,7 +64,9 @@ Copy and paste the following commands:
 BIG-IP Controller Ingress Service is deployed.  
 
 ## Verification:
-- Access the BIG-IP virtual server: http://<bigip external IP address>. 
+- Access the BIG-IP virtual server: http://??bigip external IP address??   
+- The following should be configured on the BIG-IP:
+  - new partition with virtual servere, pool, and the Kubernetes nodes as pool members.
 
 ## Destroy
 Copy and paste the following commands:  
