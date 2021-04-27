@@ -46,18 +46,16 @@ You have performed the steps in the previous directory to create a Kubernetes cl
   6. Save.
 
 #### Create and deploy CIS
-Replace the ???? chars in the next line with the your BIG-IP password. 
+1. Replace the ???? chars in the next line with the your BIG-IP password. 
 ``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``  
-Copy and paste the following commands:  
+2. Copy and paste the following commands:  
 ``kubectl create serviceaccount bigip-ctlr -n kube-system``  
 ``kubectl create -f k8s-rbac.yaml``  
 ``kubectl create -f customresourcedefinitions.yaml``  
 ``kubectl create -f cis-deployment.yaml ``  
-
 ``#Create application pods and services ``  
 ``kubectl create -f f5-hello-world-deployment.yaml``  
 ``kubectl create -f f5-hello-world-service.yaml ``  
-
 ``#Create as3 definition to configure BIG-IP ``  
 ``kubectl create -f as3.yaml``  
 
@@ -68,14 +66,14 @@ BIG-IP Controller Ingress Service is deployed.
 - The following should be configured on the BIG-IP:
   - New partition with virtual server, pool, and the Kubernetes nodes as pool members.  
 - The BIG-IP Controller is deployed as a pod in the kube-system namespace.  
-$ kubectl get pods -n kube-system   
-NAME                                         READY   STATUS    RESTARTS   AGE   
-[...]  
-k8s-bigip-ctlr-deployment-7f56b674ff-lj5kk   1/1     Running   0          85s  
-[...]   
+  *$ kubectl get pods -n kube-system*   
+  *NAME                                         READY   STATUS    RESTARTS   AGE*   
+  *[...]*   
+  *k8s-bigip-ctlr-deployment-7f56b674ff-lj5kk   1/1     Running   0          85s*  
+  *[...]*   
 
 ## Destroy
-Copy and paste the following commands:  
+1. Copy and paste the following commands:  
 
 ``kubectl delete -f as3.yaml``  
 ``kubectl delete -f f5-hello-world-service.yaml``  
