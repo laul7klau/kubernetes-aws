@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-bigip-ctlr-deployment
+  namespace: kube-system
+spec:
+# DO NOT INCREASE REPLICA COUNT
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-bigip-ctlr-deployment
+  template:
+    metadata:
+      labels:
+        app: k8s-bigip-ctlr-deployment
+    spec:
+      # Name of the Service Account bound to a Cluster Role with the required
+      # permissions
+      containers:
+        - name: k8s-bigip-ctlr
+          image: "f5networks/k8s-bigip-ctlr"
+          env:
+            - name: BIGIP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                # Replace with the name of the Secret containing your login
+                # credentials
+                  name: f5-bigip-ctlr-login 
+                  key: username
+            - name: BIGIP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                # Replace with the name of the Secret containing your login
+                # credentials
+                  name: f5-bigip-ctlr-login 
+                  key: password
+          command: ["/app/bin/k8s-bigip-ctlr"]
+          args: [
+            # See the k8s-bigip-ctlr documentation for information about
+            # all config options
+            # https://clouddocs.f5.com/containers/latest/
+            "--bigip-username=$(BIGIP_USERNAME)",
+            "--bigip-password=$(BIGIP_PASSWORD)",
+            "--bigip-url=https://192.168.16.123:8443", #Fill this with the mgmt IP address of the bigip. Use https://IP:8443 for single NIC.
+            "--bigip-partition=cispartition",  #Fill this with the name of the "create auth partition <cis_managed_partition>" you created previously.
+            "--pool-member-type=nodeport",
+            "--insecure",
+            # for secure communication provide the internal ca certificates using config-map with below option and remove insecure parameter
+            #"--trusted-certs-cfgmap=<namespace/configmap>",
+            ]
+      serviceAccount: bigip-ctlr
+      serviceAccountName: bigip-ctlr
