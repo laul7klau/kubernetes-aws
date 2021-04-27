@@ -3,7 +3,8 @@
 This is a step by step guide to deploy BIG-IP Controller Ingress Service CIS
 
 ## Pre-requisites
-You have performed the steps in the previous directory to create a Kubernetes cluster in AWS.
+- You have performed the steps in the previous directory to create a Kubernetes cluster in AWS.
+- You will also need the 6 yaml config files in the *config* directory. Use git clone or wget or manually create the files in your local directory.
 
 ## Steps  
 #### Create the BIG-IP instance
@@ -21,6 +22,9 @@ You have performed the steps in the previous directory to create a Kubernetes cl
 
 4. Run the script. Enter the subnet ID and VPC ID from step 1.  
 ``./deploy_via_bash.sh --stackName bigipstack --licenseType Hourly --sshKey mykey --subnet1Az1 subnet-??? --imageName Good200Mbps --restrictedSrcAddressApp 0.0.0.0/0 --Vpc vpc-??? --instanceType m5.large --restrictedSrcAddress 0.0.0.0/0``  
+If the task takes longer than 5mins, you may observe the following error:  
+```In order to use this AWS Marketplace product you need to accept terms and subscribe. To do so please visit https://aws.amazon.com/marketplace/pp?sku=5pooknn8bmapsmdkegu5ikyng (Service: AmazonEC2; Status Code: 401; ```   
+Visit the link in your error message to accept the terms and subscribe. This is required only once.
 
 #### BIG-IP instance tasks. 
 
