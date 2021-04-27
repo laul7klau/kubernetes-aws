@@ -39,21 +39,21 @@ Visit the link in your error message to accept the terms and subscribe. This is 
    - Verify AS3 is installed at *iApps* > *Package Managment LX*. See "*f5-appsvcs*"
 
 #### Configure the CIS deployment files:  
-- Fill in the value of "--bigip-url" in *cis-deployment.yaml* with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
-- Fill in the value of the "virtualAddresses" value in the *as3.yaml* file. This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.  
-- Configure the **"--pool-member-type=cluster"** field in the *cis-deployment.yaml* file.  
-  - For CIS nodeport deployment, set this to *nodeport*.  
-  - For CIS clusterIP deployment, set this to *cluster*.  
-- Add the security group (eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX0 to the BIG-IP instance.  
-  1. Go to Services > EC2 > Instances   
-  2. Select Name of BIG-IP instance.  
-  3. Select Actions > Security > Change Security Group
-  4. Search for (eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX)
-  5. Add Security group. 
-  6. Save.
+1. Fill in the value of "--bigip-url" in *cis-deployment.yaml* with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
+2. Fill in the value of the "virtualAddresses" value in the *as3.yaml* file. This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.  
+3. Configure the **"--pool-member-type=cluster"** field in the *cis-deployment.yaml* file.  
+   - For CIS nodeport deployment, set this to *nodeport*.  
+   - For CIS clusterIP deployment, set this to *cluster*.  
+4. Add the security group (eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX0 to the BIG-IP instance.  
+   1. Go to Services > EC2 > Instances   
+   2. Select Name of BIG-IP instance.  
+   3. Select Actions > Security > Change Security Group
+   4. Search for (eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX)
+   5. Add Security group. 
+   6. Save.
 
-#### [Perform this only for CIS clusterIP deployment]
-Enter the following commands to create the VXLAN config on the BIG-IP:  
+#### [Perform this only for CIS clusterIP deployment]  
+1. Enter the following commands to create the VXLAN config on the BIG-IP:  
 
 ``tmsh create net tunnels vxlan fl-vxlan port 8472 flooding-type none``   
 ``tmsh create net tunnels tunnel fl-vxlan key 1 profile fl-vxlan local-address 192.168.200.91``    
