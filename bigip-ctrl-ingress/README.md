@@ -22,7 +22,7 @@ You have performed the steps in the previous directory to create a Kubernetes cl
 4. Run the script. Enter the subnet ID and VPC ID from step 1.  
 ``./deploy_via_bash.sh --stackName bigipstack --licenseType Hourly --sshKey mykey --subnet1Az1 subnet-??? --imageName Good200Mbps --restrictedSrcAddressApp 0.0.0.0/0 --Vpc vpc-??? --instanceType m5.large --restrictedSrcAddress 0.0.0.0/0``  
 
-### BIG-IP instance tasks. 
+#### BIG-IP instance tasks. 
 
 1. Login to the BIG-IP
    - ``ssh -i ~/.ssh/id_rsa admin@<BIG-IP IP>``
@@ -34,7 +34,7 @@ You have performed the steps in the previous directory to create a Kubernetes cl
    - Login to BIG-IP GUI *https://<BIG-IP IP>:8443*
    - Verify AS3 is installed at *iApps* > *Package Managment LX*. See "*f5-appsvcs*"
 
-### For CIS NodePort mode deployment:
+#### For CIS NodePort mode deployment:
 - Fill in the value of "--bigip-url" in cis-deployment.yaml with the "Private IPv4 address" of the BIG-IP instance.
 - Fill in the value of the "virtualAddresses" value in the as3.yaml file. This is the IP address of the virtual server on the BIG-IP.
 - Add the security group (eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX0 to the BIG-IP instance.  
@@ -45,7 +45,7 @@ You have performed the steps in the previous directory to create a Kubernetes cl
   5. Add Security group. 
   6. Save.
 
-### Create and deploy CIS
+#### Create and deploy CIS
 Replace the ???? chars in the next line with the your BIG-IP password. 
 ``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``  
 Copy and paste the following commands:  
