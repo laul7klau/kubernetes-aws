@@ -67,11 +67,11 @@ BIG-IP Controller Ingress Service is deployed.
 - Access the BIG-IP virtual server: http://??bigip external IP address??   
 - The following should be configured on the BIG-IP:
   - New partition with virtual server, pool, and the Kubernetes nodes as pool members.  
-- The BIG-IP Controller is deployed as a pod in the kube-system namespace.
-``$ kubectl get pods -n kube-system
-NAME                                         READY   STATUS    RESTARTS   AGE
-[...]
-k8s-bigip-ctlr-deployment-7f56b674ff-lj5kk   1/1     Running   0          85s
+- The BIG-IP Controller is deployed as a pod in the kube-system namespace.  
+``$ kubectl get pods -n kube-system. 
+NAME                                         READY   STATUS    RESTARTS   AGE   
+[...]  
+k8s-bigip-ctlr-deployment-7f56b674ff-lj5kk   1/1     Running   0          85s  
 [...]``  
 
 ## Destroy
