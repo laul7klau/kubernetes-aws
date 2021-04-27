@@ -90,5 +90,9 @@ BIG-IP Controller Ingress Service is deployed.
 ``kubectl delete secret f5-bigip-ctlr-login -n kube-system``  
 
 2. On AWS portal, destroy the BIG-IP stack.  
-   - Go to CloudFormation > Stacks > Name-of-Stack, 
-   - *Delete*
+   - Go to CloudFormation > Stacks > Name-of-Stack  
+   - *Delete*.   
+
+## Source
+[F5 CIS on Clouddocs](https://clouddocs.f5.com/containers/latest/userguide/kubernetes/#examples-repository).  
+The [F5Networks / k8s-bigip-ctlr repository](https://github.com/F5Networks/k8s-bigip-ctlr).  
