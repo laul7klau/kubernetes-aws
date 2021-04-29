@@ -20,7 +20,7 @@ This is a step by step guide to deploy BIG-IP Controller Ingress Service CIS
 3. Upload the public key you generated in the previous procedure (kubernetes-aws directory) when creating the kubernetes cluster. If you didn't, simply run *ssh-keygen*.  
 ```aws ec2 import-key-pair --key-name mykey --public-key-material fileb://~/.ssh/id_rsa.pub```
 
-4. Run the script. Enter the subnet ID and VPC ID from step 1.  
+4. Fill in the ???subnet ID and ???VPC ID from step 1 in the command below and run the script.    
 ``./deploy_via_bash.sh --stackName bigipstack --licenseType Hourly --sshKey mykey --subnet1Az1 subnet-??? --imageName Good200Mbps --restrictedSrcAddressApp 0.0.0.0/0 --Vpc vpc-??? --instanceType m5.large --restrictedSrcAddress 0.0.0.0/0``  
 If the task takes longer than 5mins, you may observe the following error:  
 ```In order to use this AWS Marketplace product you need to accept terms and subscribe. To do so please visit https://aws.amazon.com/marketplace/pp?sku=5pooknn8bmapsmdkegu5ikyng (Service: AmazonEC2; Status Code: 401; ```   
@@ -56,8 +56,8 @@ Visit the link in your error message to accept the terms and subscribe. This is 
 1. Enter the following commands to create the VXLAN config on the BIG-IP:  
 
 ``tmsh create net tunnels vxlan fl-vxlan port 8472 flooding-type none``   
-``tmsh create net tunnels tunnel fl-vxlan key 1 profile fl-vxlan local-address 192.168.200.91``    
-``tmsh create net self 10.244.20.91 address 10.244.20.91/255.255.0.0 allow-service none vlan fl-vxlan``   
+``tmsh create net tunnels tunnel k8s-tunnel key 1 profile fl-vxlan local-address <bigip-selfip. node subnet>``    
+``tmsh create net self k8tunnelselfip address <assigned ip in pod subnet>/255.255.0.0 allow-service none vlan k8s-tunnel``   
 
 View the resources created on the BIG-IP at **Network > Tunnels** and **Network > Self IP**   
 
