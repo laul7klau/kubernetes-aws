@@ -20,7 +20,7 @@ Map:
 ## Steps:
 1. View *kube-cluster.yaml* which contains the basic configuration for a cluster on AWS. Refer to [eksctl yaml file examples](https://github.com/weaveworks/eksctl/tree/main/examples) 
 2. Create the cluster by entering:  
-*eksctl create cluster -f kube-cluster.yaml*.  
+*eksctl create cluster -f kube-cluster.yaml*  
 3. Set up the kubernetes dashboard.  
    - chmod u+x setup-dashboard.sh
    - ./setup-dashboard.sh
