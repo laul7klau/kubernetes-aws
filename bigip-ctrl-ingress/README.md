@@ -39,12 +39,13 @@ Visit the link in your error message to accept the terms and subscribe. This is 
    - Verify AS3 is installed at *iApps* > *Package Managment LX*. See "*f5-appsvcs*"
 
 #### Configure the CIS deployment files:  
-1. Fill in the value of "--bigip-url" in *cis-deployment.yaml* with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
-2. Fill in the value of the "virtualAddresses" value in the *as3.yaml* file. This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.  
-3. Configure the **"--pool-member-type=cluster"** field in the *cis-deployment.yaml* file.  
-   - For CIS nodeport deployment, set this to *nodeport*.  
-   - For CIS clusterIP deployment, set this to *cluster*.  
-4. Add the security group (eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX0 to the BIG-IP instance.  
+1. *cis-deployment.yaml*: 
+   - Fill in the value of "--bigip-url" in  with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
+   - Configure the **"--pool-member-type=cluster"** field in the *cis-deployment.yaml* file.  
+     - For CIS nodeport deployment, set this to *nodeport*.   
+     - For CIS clusterIP deployment, set this to *cluster*.  
+2. *as3.yaml*: Fill in the value of the "virtualAddresses" value. This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.   
+3. Add the security group (eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX0 to the BIG-IP instance.  
    1. Go to Services > EC2 > Instances   
    2. Select Name of BIG-IP instance.  
    3. Select Actions > Security > Change Security Group
