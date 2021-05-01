@@ -4,7 +4,7 @@ This repository is a step by step guide for the QUICK deployment of NGINX Ingres
 Map:
 - **kubernetes-aws**:  
   Perform the steps in this README.md first to first deploy a Kubernetes cluster on AWS.    
-     - **nginx**: Perform the steps here to deploy NGINX ingress controller.  
+     - **nginx-ingress**: Perform the steps here to deploy NGINX ingress controller.  
      OR
      - **bigip-ctrl-ingress**: Perform the steps here if you want to deploy BIG-IP CIS.  
 
