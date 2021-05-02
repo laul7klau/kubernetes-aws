@@ -16,7 +16,7 @@ kubectl delete -f cis-ingresslink-deployment.yaml
 kubectl delete -f customresourcedefinitions.yaml
 kubectl delete -f ingresslink-customresourcedefinition.yaml
 
-#Remove big-ip cis resources
+#Remove big-ip cis resources. Warning: This will delete all BIG-IP CIS resources created in the parent directory as well.
 kubectl delete -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml
 kubectl delete serviceaccount bigip-ctlr -n kube-system
 kubectl delete secret f5-bigip-ctlr-login -n kube-system
