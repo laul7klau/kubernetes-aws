@@ -25,14 +25,24 @@ cp cis-deployment.yaml cis-ingresslink-deployment.yaml
 4. Copy and paste the following commands:  
 
 ``wget https://github.com/laul7klau/kubernetes-aws/blob/main/bigip-ctrl-ingress/ingressLink/nodeport/config/customresourcedefinitions.yaml ``    
+
 ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/f5-hello-world-deployment.yaml`` 
+
 ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/f5-hello-world-service.yaml``    
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink-customresourcedefinition.yaml`` 
+
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink-customresourcedefinition.yaml``
+
 ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink.yaml``   
+
 ``kubectl apply -f ingresslink-customresourcedefinition.yaml``    
 ``kubectl apply -f customresourcedefinitions.yaml``   
 ``kubectl apply -f cis-ingresslink-deployment.yaml``   
 ``kubectl apply -f ingresslink.yaml``    
+
+# Verification:
+- In the BIG-IP instance, 2 virtual servers (ports 80, 443) should be created with 2 pools (80, 443).  
+  Note the https VS does not have ssl profiles. SSL is terminated at the NGINX Ingress controller. In production, you should terminate SSL on the BIG=IP instance.  
+- 
 
 
 
