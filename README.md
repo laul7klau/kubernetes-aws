@@ -66,3 +66,14 @@ NAME                                 DESIRED   CURRENT   READY   AGE
 replicaset.apps/coredns-6548845887   2         2         2       29h```
 
 ## 
+
+## Destroy.  
+On the AWS console, go to Services > CloudFormation.   
+Select the nodegroup stacks, select Delete. 
+Select the Kubernetes cluster, select Delete.  
+
+## What's next:  
+- Go to the sub directory, *nginx-ingress*, to create NGINX Ingress Controller.    
+OR
+- Go to the sub directory *bigip-ctrl-ingress* to create the BIG-IP Controller Ingress Service, CIS.  
+  -  Then go to the sub-sub directory *Ingress link*, to create the NGINX Ingress Controller and F5 Ingress Link.  
