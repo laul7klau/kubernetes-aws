@@ -27,9 +27,13 @@ For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode.
 ``kubectl delete -f as3.yaml``  
 ``kubectl delete -f cis-deployment.yaml``   
 ``cp cis-deployment.yaml cis-ingresslink-deployment.yaml``  
+``kubectl apply -f cis-ingresslink-deployment.yaml`` 
 
-2. Edit *cis-ingresslink-deployment.yaml*:  
-	 - Uncomment "--custom-resource-mode=true",  
+2. Edit  
+   - *cis-ingresslink-deployment.yaml*:  
+      - Uncomment "--custom-resource-mode=true",    
+   - *ingresslink.yaml*:  
+      - Replace 'virtualServerAddress: "??????"' with the VS IP. For single NIC, this is the self IP address.  
 
 ## Create F5 Ingress Link
 1. Create the following iRule on the BIG-IP instance:
@@ -43,8 +47,7 @@ For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode.
 ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink.yaml``   
 
 ``kubectl apply -f ingresslink-customresourcedefinition.yaml``    
-``kubectl apply -f customresourcedefinitions.yaml``   
-``kubectl apply -f cis-ingresslink-deployment.yaml``   
+``kubectl apply -f customresourcedefinitions.yaml``     
 ``kubectl apply -f ingresslink.yaml``    
 
 NGINX ingress controller, BIG-IP CIS, BIG-IP instance and F5 Ingress link are deployed.
