@@ -8,7 +8,7 @@ kubectl delete -f kubernetes-ingress/deployments/cafe.yaml
 kubectl delete namespace nginx-ingress
 kubectl delete clusterrole nginx-ingress
 kubectl delete clusterrolebinding nginx-ingress
-kubectl delete -f common/crds
+kubectl delete -f kubernetes-ingress/deployments/common/crds
 
 #Remove ingress link resources
 kubectl delete -f ingresslink.yaml
