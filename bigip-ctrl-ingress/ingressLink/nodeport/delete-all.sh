@@ -1,9 +1,9 @@
 #!/bin/sh
-#Pre-requisites: You are in the same root directory after creating the ingress controller from the create-ingress.sh script.
+#Pre-requisites: You are in the same root project directory where 'ingresslink.yaml' and the 'kubernetes-ingress' github directory is located.
 #Remove nginx resources.
-kubectl delete -f cafe-ingress.yaml
-kubectl delete -f cafe-secret.yaml
-kubectl delete -f cafe.yaml
+kubectl delete -f kubernetes-ingress/deployments/cafe-ingress.yaml
+kubectl delete -f kubernetes-ingress/deployments/cafe-secret.yaml
+kubectl delete -f kubernetes-ingress/deployments/cafe.yaml
 
 kubectl delete namespace nginx-ingress
 kubectl delete clusterrole nginx-ingress
