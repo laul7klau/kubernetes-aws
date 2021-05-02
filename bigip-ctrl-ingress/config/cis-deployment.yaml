@@ -43,9 +43,11 @@ spec:
             "--bigip-password=$(BIGIP_PASSWORD)",
             "--bigip-url=https://???bigip-mgmtIP???:8443", #Fill this with the mgmt IP address of the bigip. Use https://IP:8443 for single NIC.
             "--bigip-partition=cispartition",  #Fill this with the name of the "create auth partition <cis_managed_partition>" you created previously.
-            "--pool-member-type=nodeport",  #Fill this with "cluster" if running in clusterIP mode
+            "--pool-member-type=nodeport",  #Fill this with "cluster" if running in ClusterIP mode
+            #"--flannel-name=/Common/k8s-tunnel", #Uncomment this only when using ClusterIP mode. Replace k8s-tunnel with the name you created.
             #"--custom-resource-mode=true", #Uncomment this only when deploying F5 ingresslink and as3 will not work
             "--insecure",
+            "--log-as3-response=true",
             "--log-level=DEBUG",
             # for secure communication provide the internal ca certificates using config-map with below option and remove insecure parameter
             #"--trusted-certs-cfgmap=<namespace/configmap>",
