@@ -24,7 +24,11 @@ cp cis-deployment.yaml cis-ingresslink-deployment.yaml
    - Follow steps 4 and 5 in [Lab4.1 BIG-IP Setup](https://clouddocs.f5.com/training/community/containers/html/class1/module4/lab1.html) to create the iRule *Proxy_Protocol_iRule* on the BIG-IP instance.  
 4. Copy and paste the following commands:  
 
-``wget. ``   
+``wget https://github.com/laul7klau/kubernetes-aws/blob/main/bigip-ctrl-ingress/ingressLink/nodeport/config/customresourcedefinitions.yaml ``    
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/f5-hello-world-deployment.yaml`` 
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/f5-hello-world-service.yaml``    
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink-customresourcedefinition.yaml`` 
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink.yaml``   
 ``kubectl apply -f ingresslink-customresourcedefinition.yaml``    
 ``kubectl apply -f customresourcedefinitions.yaml``   
 ``kubectl apply -f cis-ingresslink-deployment.yaml``   
