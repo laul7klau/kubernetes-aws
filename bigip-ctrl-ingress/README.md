@@ -78,8 +78,6 @@ View the resources created on the BIG-IP at **Network > Tunnels** and **Network 
 ``kubectl create serviceaccount bigip-ctlr -n kube-system``  
 ``kubectl create -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml``  
   
-``kubectl create -f wget https://raw.githubusercontent.com/F5Networks/k8s-bigip-ctlr/master/docs/_static/config_examples/crd/Install/customresourcedefinitions.yml``  
-  
 ``kubectl create -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/cis-deployment.yaml``  
 
 ``#Create application pods and services ``  
@@ -113,7 +111,6 @@ BIG-IP Controller Ingress Service is deployed.
 ``kubectl delete -f f5-hello-world-service.yaml``  
 ``kubectl delete -f f5-hello-world-deployment.yaml``  
 ``kubectl delete -f cis-deployment.yaml``  
-``kubectl delete -f customresourcedefinitions.yaml``  
 ``kubectl delete -f k8s-rbac.yaml``  
 ``kubectl delete serviceaccount bigip-ctlr -n kube-system``  
 ``kubectl delete secret f5-bigip-ctlr-login -n kube-system``  
