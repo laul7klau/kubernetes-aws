@@ -15,10 +15,10 @@ In this section, you create a F5 Ingress Link.
 # Steps:
 To create F5 Ingress Link, create NGINX ingress controller and BIG-IP Controller Ingress Service first.  
 ## Create NGINX ingress controller.   
-1. Download the *create-ingress.sh* script.  
+1. Download the *create-nginx-ingress.sh* script.  
 2. Run the script:  
    - chmod u+x create-ingress.sh    
-   - ./create-ingress.sh   
+   - ./create-nginx-ingress.sh   
    OR simply copy and paste the commands in the script all at together.   
    
 ## Modify existing BIG-IP Controller Ingress Service.  
