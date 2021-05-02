@@ -34,7 +34,7 @@ The following Kubernetes objects are created by the default kube-cluster.yaml
 - 2 public nodes as AWS instances. External IP addresses assigned.
 - 1 private node as AWS instance.  
   
-``$ kubectl get nodes. 
+```$ kubectl get nodes. 
 NAME                                           STATUS   ROLES    AGE   VERSION   
 ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0  
 ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0  
@@ -62,7 +62,8 @@ NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/coredns   2/2     2            2           29h  
 
 NAME                                 DESIRED   CURRENT   READY   AGE  
-replicaset.apps/coredns-6548845887   2         2         2       29h.``   
+replicaset.apps/coredns-6548845887   2         2         2       29h.```   
+```  
 
 ## Destroy.  
 On the AWS console, go to Services > CloudFormation.   
