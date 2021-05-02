@@ -3,7 +3,7 @@ In this section, you create a F5 Ingress Link.
 - BIG-IP Instance.  
 - BIG-IP Controller Ingress Services.  
 - F5 Ingress Link. 
-
+Image source: [F5 Clouddocs](https://clouddocs.f5.com/containers/latest/userguide/ingresslink/)
 ![F5 Ingress Link](ingress-link-diagram.png)
 
 # Pre-requisites:
