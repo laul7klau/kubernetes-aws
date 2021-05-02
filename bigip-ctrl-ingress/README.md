@@ -4,7 +4,6 @@ This is a step by step guide to deploy BIG-IP Controller Ingress Service CIS
 
 ## Pre-requisites
 - You have performed the steps in the previous directory to create a Kubernetes cluster in AWS.
-- You will also need the 6 yaml config files in the *config* directory. Use *git clone* or *wget* or manually create the files in your local directory.
 
 ## Steps  
 #### Create the BIG-IP instance
@@ -68,15 +67,18 @@ View the resources created on the BIG-IP at **Network > Tunnels** and **Network 
 ``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``  
 
 2. Copy and paste the following commands:  
+wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/cis-deployment.yaml
+wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml
+wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/as3.yaml
 
 ``kubectl create serviceaccount bigip-ctlr -n kube-system``  
-``kubectl create -f k8s-rbac.yaml``  
-``kubectl create -f customresourcedefinitions.yaml``  
-``kubectl create -f cis-deployment.yaml ``  
+``kubectl create -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml``  
+``kubectl create -f wget https://raw.githubusercontent.com/F5Networks/k8s-bigip-ctlr/master/docs/_static/config_examples/crd/Install/customresourcedefinitions.yml``  
+``kubectl create -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/cis-deployment.yaml``  
 
 ``#Create application pods and services ``  
-``kubectl create -f f5-hello-world-deployment.yaml``  
-``kubectl create -f f5-hello-world-service.yaml `` 
+``kubectl create -f https://raw.githubusercontent.com/F5Networks/k8s-bigip-ctlr/master/docs/_static/config_examples/configmap/user-defined-configmap/deployments/f5-hello-world-deployment.yaml``  
+``kubectl create -f https://raw.githubusercontent.com/F5Networks/k8s-bigip-ctlr/master/docs/_static/config_examples/configmap/user-defined-configmap/deployments/f5-hello-world-service.yaml`` 
 
 ``#Create as3 definition to configure BIG-IP ``  
 ``kubectl create -f as3.yaml``  
