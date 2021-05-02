@@ -4,7 +4,7 @@ metadata:
   name: vs-ingresslink
   namespace: nginx-ingress
 spec:
-  virtualServerAddress: "192.168.11.141"
+  virtualServerAddress: "??????" #Replace the ??? with the VS IP. For single NIC BIG-IP instance, this is the self IP.
   iRules:
     - /Common/Proxy_Protocol_iRule
   selector:
