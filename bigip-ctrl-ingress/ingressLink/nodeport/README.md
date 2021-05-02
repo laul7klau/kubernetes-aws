@@ -36,7 +36,7 @@ For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode.
    - Follow steps 4 and 5 in [Lab4.1 BIG-IP Setup](https://clouddocs.f5.com/training/community/containers/html/class1/module4/lab1.html) to create the iRule *Proxy_Protocol_iRule* on the BIG-IP instance.  
 2. Copy and paste the following commands:  
 
-``wget https://github.com/laul7klau/kubernetes-aws/blob/main/bigip-ctrl-ingress/ingressLink/nodeport/config/customresourcedefinitions.yaml ``     
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/customresourcedefinitions.yaml``     
 
 ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink-customresourcedefinition.yaml``
 
