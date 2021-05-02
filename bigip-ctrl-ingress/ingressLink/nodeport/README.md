@@ -27,7 +27,7 @@ For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode.
 ``kubectl delete -f as3.yaml``  
 ``kubectl delete -f cis-deployment.yaml``   
 ``cp cis-deployment.yaml cis-ingresslink-deployment.yaml``  
-``kubectl apply -f cis-ingresslink-deployment.yaml`` 
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink.yaml``    
 
 2. Edit  
    - *cis-ingresslink-deployment.yaml*:  
@@ -42,10 +42,9 @@ For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode.
 
 ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/customresourcedefinitions.yaml``     
 
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink-customresourcedefinition.yaml``
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink-customresourcedefinition.yaml``   
 
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink.yaml``   
-
+``kubectl apply -f cis-ingresslink-deployment.yaml``  
 ``kubectl apply -f ingresslink-customresourcedefinition.yaml``    
 ``kubectl apply -f customresourcedefinitions.yaml``     
 ``kubectl apply -f ingresslink.yaml``    
