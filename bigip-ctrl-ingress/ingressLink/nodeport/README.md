@@ -24,11 +24,7 @@ cp cis-deployment.yaml cis-ingresslink-deployment.yaml
    - Follow steps 4 and 5 in [Lab4.1 BIG-IP Setup](https://clouddocs.f5.com/training/community/containers/html/class1/module4/lab1.html) to create the iRule *Proxy_Protocol_iRule* on the BIG-IP instance.  
 4. Copy and paste the following commands:  
 
-``wget https://github.com/laul7klau/kubernetes-aws/blob/main/bigip-ctrl-ingress/ingressLink/nodeport/config/customresourcedefinitions.yaml ``    
-
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/f5-hello-world-deployment.yaml`` 
-
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/f5-hello-world-service.yaml``    
+``wget https://github.com/laul7klau/kubernetes-aws/blob/main/bigip-ctrl-ingress/ingressLink/nodeport/config/customresourcedefinitions.yaml ``     
 
 ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink-customresourcedefinition.yaml``
 
@@ -40,9 +36,13 @@ cp cis-deployment.yaml cis-ingresslink-deployment.yaml
 ``kubectl apply -f ingresslink.yaml``    
 
 # Verification:
-- In the BIG-IP instance, 2 virtual servers (ports 80, 443) should be created with 2 pools (80, 443).  
-  Note the https VS does not have ssl profiles. SSL is terminated at the NGINX Ingress controller. In production, you should terminate SSL on the BIG=IP instance.  
-- 
+- In the BIG-IP instance, 2 virtual servers (ports 80, 443) should be created with 2 pools (80, 443). 
+  - Each VS corresponds to the services declared in *'nodeport.yaml'* when creating the nginx-ingress controller. The selector in ingresslink.yaml must match the *'label'* in *'nodeport.yaml'*
+  - The iRule created in step 3 should automatically be associated with the VSs.
+  Note: the https VS does not have ssl profiles. SSL is terminated at the NGINX Ingress controller. In production, you should terminate SSL on the BIG=IP instance.  
+- Access http://cafe.example.com/coffee and https://cafe.example.com/tea, where cafe.example.com is matched to the aws external IP of the BIG-IP instance in the host file. The coffee and tea app deployed with the NGINX ingress controller should display.
+
+
 
 
 
