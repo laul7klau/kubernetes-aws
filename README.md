@@ -32,16 +32,15 @@ The cluster creation process on AWS will typically take 25-30mins.
 The following Kubernetes objects are created by the default kube-cluster.yaml
 - 1 Kubernetes cluster.
 - 2 public nodes as AWS instances. External IP addresses assigned.
-- 1 private node as AWS instance.
-
-```  
-$ kubectl get nodes
+- 1 private node as AWS instance.  
+  
+``$ kubectl get nodes
 NAME                                           STATUS   ROLES    AGE   VERSION
 ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0
 ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0
-ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0
+ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0``
 
-$ kubectl get all -n kube-system
+``$ kubectl get all -n kube-system
 NAME                           READY   STATUS    RESTARTS   AGE
 pod/aws-node-fmf9h             1/1     Running   0          29h
 pod/aws-node-ms9ts             1/1     Running   0          29h
@@ -50,9 +49,9 @@ pod/coredns-6548845887-lxtk4   1/1     Running   0          29h
 pod/coredns-6548845887-wj679   1/1     Running   0          29h
 pod/kube-proxy-48fmz           1/1     Running   0          29h
 pod/kube-proxy-pvjsv           1/1     Running   0          29h
-pod/kube-proxy-whzt7           1/1     Running   0          29h
+pod/kube-proxy-whzt7           1/1     Running   0          29h``
 
-NAME               TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)         AGE
+``NAME               TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)         AGE
 service/kube-dns   ClusterIP   10.100.0.10   <none>        53/UDP,53/TCP   29h
 
 NAME                        DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
@@ -63,9 +62,7 @@ NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/coredns   2/2     2            2           29h
 
 NAME                                 DESIRED   CURRENT   READY   AGE
-replicaset.apps/coredns-6548845887   2         2         2       29h```
-
-## 
+replicaset.apps/coredns-6548845887   2         2         2       29h.``  
 
 ## Destroy.  
 On the AWS console, go to Services > CloudFormation.   
