@@ -108,12 +108,14 @@ BIG-IP Controller Ingress Service is deployed.
 1. Copy and paste the following commands:  
 
 ``kubectl delete -f as3.yaml``  
-``kubectl delete -f f5-hello-world-service.yaml``  
-``kubectl delete -f f5-hello-world-deployment.yaml``  
 ``kubectl delete -f cis-deployment.yaml``  
 ``kubectl delete -f k8s-rbac.yaml``  
 ``kubectl delete serviceaccount bigip-ctlr -n kube-system``  
 ``kubectl delete secret f5-bigip-ctlr-login -n kube-system``  
+``kubectl create -f https://raw.githubusercontent.com/F5Networks/k8s-bigip-ctlr/master/docs/_static/config_examples/configmap/user-defined-configmap/deployments/f5-hello-world-deployment.yaml``  
+  
+``kubectl create -f https://raw.githubusercontent.com/F5Networks/k8s-bigip-ctlr/master/docs/_static/config_examples/configmap/user-defined-configmap/deployments/f5-hello-world-service.yaml`` 
+
 
 2. On AWS portal, destroy the BIG-IP stack.  
    - Go to CloudFormation > Stacks > Name-of-Stack  
