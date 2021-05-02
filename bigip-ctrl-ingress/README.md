@@ -103,6 +103,9 @@ BIG-IP Controller Ingress Service is deployed.
   k8s-bigip-ctlr-deployment-7f56b674ff-lj5kk   1/1     Running   0          85s  
   [...]   
 
+## What's next:  
+Go to the sub directory *ingresslink*, to create NGINX ingress controller and F5 Ingress Link.  
+
 ## Destroy
 1. Copy and paste the following commands:  
 
