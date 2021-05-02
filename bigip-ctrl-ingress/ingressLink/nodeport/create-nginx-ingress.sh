@@ -31,3 +31,4 @@ kubectl apply -f nginx-config.yaml
 kubectl create -f cafe.yaml
 kubectl create -f cafe-secret.yaml
 kubectl create -f cafe-ingress.yaml
+cd ../..
