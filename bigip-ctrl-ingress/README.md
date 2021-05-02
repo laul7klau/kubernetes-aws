@@ -1,12 +1,12 @@
-# BIG-IP Controller Ingress Service  
+This is a step by step guide to deploy BIG-IP Controller Ingress Service, CIS. This section creates the following:
+- [BIG-IP instance](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress#create-the-big-ip-instance)
+- [BIG-IP Controller Ingress Service](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress#create-the-big-ip-controller-ingress-service)
 
-This is a step by step guide to deploy BIG-IP Controller Ingress Service CIS
-
-## Pre-requisites
+# Pre-requisites
 - You have performed the steps in the previous directory to create a Kubernetes cluster in AWS.
 
-## Steps  
-#### Create the BIG-IP instance
+# Steps  
+### Create the BIG-IP instance
 1. From the K8 cluster created, gather and record down the following information:
    - **VPC:** ID where eksctl deployed the k8 cluster. Go to Services > VPC
    - **Subnet ID:** to deploy the BIG-IP instance. Go to Services > Subnets. Example: Subnet ID of  eksctl-<name>-cluster/SubnetPublicUSWEST2A
@@ -37,6 +37,7 @@ Visit the link in your error message to accept the terms and subscribe. This is 
    - Login to BIG-IP GUI *https://<BIG-IP IP>:8443*
    - Verify AS3 is installed at *iApps* > *Package Managment LX*. See "*f5-appsvcs*"
 
+### Create the BIG-IP Controller Ingress Service
 #### Configure the CIS deployment files:  
 1. *cis-deployment.yaml*: 
    - Fill in the value of "--bigip-url" in  with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
