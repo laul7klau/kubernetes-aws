@@ -9,3 +9,6 @@ kubectl delete namespace nginx-ingress
 kubectl delete clusterrole nginx-ingress
 kubectl delete clusterrolebinding nginx-ingress
 kubectl delete -f common/crds
+
+cd ../..
+echo "Manually remove the NGINX ingress github clone with *'rm -rf kubernetes-ingress'*"
