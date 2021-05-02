@@ -42,7 +42,9 @@ Visit the link in your error message to accept the terms and subscribe. This is 
 1. Copy and paste the following commands:   
 
 ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/cis-deployment.yaml``  
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/as3.yaml``   
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/as3.yaml``  
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/f5-hello-world-deployment.yaml``  
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/f5-hello-world-service.yaml``  
 
 2. *cis-deployment.yaml*: 
    - Fill in the value of "--bigip-url" in  with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
@@ -74,17 +76,15 @@ View the resources created on the BIG-IP at **Network > Tunnels** and **Network 
 
 2. Copy and paste the following commands:     
 
-``kubectl create serviceaccount bigip-ctlr -n kube-system``  
 ``kubectl create -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml``  
-  
+
+``kubectl create serviceaccount bigip-ctlr -n kube-system``   
 ``kubectl create -f cis-deployment.yaml``  
 
 ``#Create application pods and services ``  
-``kubectl create -f https://raw.githubusercontent.com/F5Networks/k8s-bigip-ctlr/master/docs/_static/config_examples/configmap/user-defined-configmap/deployments/f5-hello-world-deployment.yaml``  
+``kubectl create -f f5-hello-world-deployment.yaml``  
+``kubectl create -f f5-hello-world-service.yaml`` 
   
-``kubectl create -f https://raw.githubusercontent.com/F5Networks/k8s-bigip-ctlr/master/docs/_static/config_examples/configmap/user-defined-configmap/deployments/f5-hello-world-service.yaml`` 
-  
-
 ``#Create as3 definition to configure BIG-IP ``  
 ``kubectl create -f as3.yaml``  
 
