@@ -12,7 +12,7 @@ kubectl apply -f common/ns-and-sa.yaml
 kubectl apply -f rbac/rbac.yaml
 
 kubectl apply -f common/default-server-secret.yaml
-kubectl apply -f common/nginx-config.yaml
+kubectl apply -f nginx-config.yaml
 kubectl apply -f common/ingress-class.yaml
 
 kubectl apply -f common/crds/k8s.nginx.org_virtualservers.yaml
@@ -26,7 +26,6 @@ kubectl apply -f daemon-set/nginx-ingress.yaml
 #Exposing service as nodeport and creating AWS loadbalancer
 kubectl create -f service/nodeport.yaml
 kubectl apply -f service/loadbalancer-aws-elb.yaml
-kubectl apply -f nginx-config.yaml
 #Configuring coffee tea app by configuring Ingress Controller through ingress resource
 kubectl create -f cafe.yaml
 kubectl create -f cafe-secret.yaml
