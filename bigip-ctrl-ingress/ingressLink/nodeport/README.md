@@ -2,9 +2,11 @@ In this section, you create a F5 Ingress Link.
 - NGINX Ingress Controller.  
 - BIG-IP Instance.  
 - BIG-IP Controller Ingress Services.  
-- F5 Ingress Link. 
-Image source: [F5 Clouddocs](https://clouddocs.f5.com/containers/latest/userguide/ingresslink/)
-![F5 Ingress Link](ingress-link-diagram.png)
+- F5 Ingress Link.  
+
+**Image source**: [F5 Clouddocs](https://clouddocs.f5.com/containers/latest/userguide/ingresslink/)  
+
+![F5 Ingress Link](ingress-link-diagram.png)   
 
 # Pre-requisites:
 - You must have performed all the steps in the parent directory to create a BIG-IP instance and BIG-IP Controller Ingress Service.  
