@@ -7,6 +7,7 @@ cp ../examples/complete-example/cafe.yaml .
 cp ../examples/complete-example/cafe-secret.yaml .
 wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/nginx-ingress/config/cafe-ingress.yaml
 wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/nginx-ingress/config/nginx-config.yaml
+wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/ingressLink/nodeport/config/nodeport.yaml
 #Install Ingress Controller per https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/
 kubectl apply -f common/ns-and-sa.yaml
 kubectl apply -f rbac/rbac.yaml
@@ -24,7 +25,7 @@ kubectl apply -f common/global-configuration.yaml
 #Install Ingress Controller pods as daemonset
 kubectl apply -f daemon-set/nginx-ingress.yaml
 #Exposing service as nodeport and creating AWS loadbalancer
-kubectl create -f service/nodeport.yaml
+kubectl create -f nodeport.yaml
 kubectl apply -f nginx-config.yaml
 #Configuring coffee tea app by configuring Ingress Controller through ingress resource
 kubectl create -f cafe.yaml
