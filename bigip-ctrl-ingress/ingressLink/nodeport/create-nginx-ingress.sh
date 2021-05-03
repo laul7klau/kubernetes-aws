@@ -21,8 +21,10 @@ kubectl apply -f common/crds/k8s.nginx.org_transportservers.yaml
 kubectl apply -f common/crds/k8s.nginx.org_policies.yaml
 kubectl apply -f common/crds/k8s.nginx.org_globalconfigurations.yaml
 kubectl apply -f common/global-configuration.yaml
+
 #Install Ingress Controller pods as daemonset
 kubectl apply -f daemon-set/nginx-ingress.yaml
+
 #Exposing service as nodeport and creating AWS loadbalancer
 kubectl create -f nodeport.yaml
 
