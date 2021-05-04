@@ -56,7 +56,9 @@ Visit the link in your error message to accept the terms and subscribe. This is 
    1. Go to Services > EC2 > Instances   
    2. Select Name of BIG-IP instance.  
    3. Select Actions > Security > Change Security Group
-   4. Search for (eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX)
+   4. Search for either of the security group (depending on whether you used eksctl or kops to deploy):
+      - eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX
+      - nodes.x(domain)xx.k8s.local
    5. Add Security group. 
    6. Save.
 
