@@ -25,6 +25,7 @@ kubectl apply -f common/global-configuration.yaml
 kubectl apply -f daemon-set/nginx-ingress.yaml
 #Exposing service as nodeport and creating AWS loadbalancer
 kubectl create -f service/nodeport.yaml
+
 kubectl apply -f service/loadbalancer-aws-elb.yaml
 #Configuring coffee tea app by configuring Ingress Controller through ingress resource
 kubectl create -f cafe.yaml
