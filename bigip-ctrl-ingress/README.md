@@ -52,11 +52,11 @@ Visit the link in your error message to accept the terms and subscribe. This is 
      - For CIS nodeport deployment, set this to *nodeport*.   
      - For CIS clusterIP deployment, set this to *cluster*.  
 3. *as3.yaml*: Fill in the value of the "virtualAddresses" value. This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.   
-4. Add the security group (eksctl-azkubecluster-cluster-ClusterSharedNodeSecurityGroup-XXXX0 to the BIG-IP instance.  
+4. Add the security **node** group to the BIG-IP instance.  
    1. Go to Services > EC2 > Instances   
    2. Select Name of BIG-IP instance.  
    3. Select Actions > Security > Change Security Group
-   4. Search for either of the security group (depending on whether you used eksctl or kops to deploy):
+   4. Search for either of the **node** security group (depending on whether you used eksctl or kops to deploy):
       - **eksctl**: eksctl-xxx-cluster-ClusterSharedNodeSecurityGroup-xxx
       - **kops**: nodes.xxx.k8s.local
    5. Add Security group. 
