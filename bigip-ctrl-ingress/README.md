@@ -62,15 +62,6 @@ Visit the link in your error message to accept the terms and subscribe. This is 
    5. Add Security group. 
    6. Save.
 
-#### [Perform this only for CIS clusterIP deployment]  
-1. Enter the following commands to create the VXLAN config on the BIG-IP:  
-
-``tmsh create net tunnels vxlan fl-vxlan port 8472 flooding-type none``   
-``tmsh create net tunnels tunnel k8s-tunnel key 1 profile fl-vxlan local-address <bigip-selfip. node subnet>``    
-``tmsh create net self k8tunnelselfip address <assigned ip in pod subnet>/255.255.0.0 allow-service none vlan k8s-tunnel``   
-
-View the resources created on the BIG-IP at **Network > Tunnels** and **Network > Self IP**   
-
 #### Create and deploy BIG-IP Controller Ingress Service and application pods.  
 1. Replace the ???? chars in the next line with the your BIG-IP password. 
 
@@ -96,8 +87,8 @@ BIG-IP Controller Ingress Service is deployed.
 - Access the BIG-IP virtual server: http://??bigip external IP address??   
 - The following should be configured on the BIG-IP:
   - New partition with virtual server, pool, and the Kubernetes nodes as pool members. 
-  - The pool members port numbers will be ephemeral random port numbers when using CIS **nodeport deployment**.   
-  - It would be a fixed port number such as 8080, configured in the application yanl file. Or the actual port number thee pod is listening at for CIS **clusterIP deployment**.  
+  - In CIS **nodeport**, the pool members are the Node IP addresses and port numbers are different ephemeral random port numbers  
+  - In CIS **ClusterIP**, pool members are Pod IP addresses and port number is the one defined in the *f5-hello-world-deployment.yaml* file.  
 - The BIG-IP Controller is deployed as a pod in the kube-system namespace.  
   $ kubectl get pods -n kube-system  
   NAME                                         READY   STATUS    RESTARTS   AGE   
