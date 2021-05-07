@@ -18,7 +18,7 @@ Map:
 4. Install **eksctl** on your client device to manage the k8 cluster. Refer to [Installing eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html).
 
 ## Steps:
-1. View *kube-cluster.yaml* which contains the basic configuration for a cluster on AWS. Refer to [eksctl yaml file examples](https://github.com/weaveworks/eksctl/tree/main/examples) 
+1. Download *kube-cluster.yaml* which contains the basic configuration for a cluster on AWS. Refer to [eksctl yaml file examples](https://github.com/weaveworks/eksctl/tree/main/examples)  
    ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/kube-cluster.yaml``
 2. Create the cluster by entering:  
    ``eksctl create cluster -f kube-cluster.yaml``   
