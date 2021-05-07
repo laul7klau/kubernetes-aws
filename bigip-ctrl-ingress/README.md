@@ -83,7 +83,14 @@ Visit the link in your error message to accept the terms and subscribe. This is 
 
 BIG-IP Controller Ingress Service is deployed.  
 
-## Verification:
+#### Implement Cluster IP mode:
+The setup is currently running in Nodeport mode. See the verification section below to verify the nodeport vs clusterIP set up.  
+To switch to ClusterIP mode, run:  
+``kc edit -f cis-deployment.yaml -n kube-system``  
+Replace 
+``- --pool-member-type=nodeport``  with   ``- --pool-member-type=cluster``   
+
+## Verification:   
 - Access the BIG-IP virtual server: http://??bigip external IP address??   
 - The following should be configured on the BIG-IP:
   - New partition with virtual server, pool, and the Kubernetes nodes as pool members. 
