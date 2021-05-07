@@ -1,5 +1,5 @@
 # kubernetes-aws
-This repository is a step by step guide for the QUICK deployment of NGINX Ingress Controller or BIG-IP Controller Ingress Service for Kubernetes.  
+This repository is a step by step guide for the QUICK deployment of NGINX Ingress Controller or BIG-IP Container Ingress Service for Kubernetes.  
 
 Map:
 - **kubernetes-aws**:  
