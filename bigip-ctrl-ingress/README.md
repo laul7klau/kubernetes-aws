@@ -1,6 +1,6 @@
-This is a step by step guide to deploy BIG-IP Controller Ingress Service, CIS. This section creates the following:
+This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. This section creates the following:
 - [BIG-IP instance](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress#create-the-big-ip-instance)
-- [BIG-IP Controller Ingress Service](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress#create-the-big-ip-controller-ingress-service)
+- [BIG-IP Container Ingress Service](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress#create-the-big-ip-controller-ingress-service)
 
 # Pre-requisites
 - You have performed the steps in the previous directory to create a Kubernetes cluster in AWS.
@@ -37,7 +37,7 @@ Visit the link in your error message to accept the terms and subscribe. This is 
    - Login to BIG-IP GUI *https://<BIG-IP IP>:8443*
    - Verify AS3 is installed at *iApps* > *Package Managment LX*. See "*f5-appsvcs*"
 
-### Create the BIG-IP Controller Ingress Service
+### Create the BIG-IP Container Ingress Service
 #### Configure the CIS deployment files:  
 1. Copy and paste the following commands:   
 
@@ -62,7 +62,7 @@ Visit the link in your error message to accept the terms and subscribe. This is 
    5. Add Security group. 
    6. Save.
 
-#### Create and deploy BIG-IP Controller Ingress Service and application pods.  
+#### Create and deploy BIG-IP Container Ingress Service and application pods.  
 1. Replace the ???? chars in the next line with the your BIG-IP password. 
 
 ``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``  
@@ -81,7 +81,7 @@ Visit the link in your error message to accept the terms and subscribe. This is 
 ``#Create as3 definition to configure BIG-IP ``  
 ``kubectl create -f as3.yaml``  
 
-BIG-IP Controller Ingress Service is deployed.  
+BIG-IP Container Ingress Service is deployed.  
 
 #### Implement Cluster IP mode:
 The setup is currently running in Nodeport mode. See the verification section below to verify the nodeport vs clusterIP set up.  
