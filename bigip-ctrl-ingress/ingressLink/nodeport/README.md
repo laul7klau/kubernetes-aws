@@ -1,7 +1,7 @@
 In this section, you create a F5 Ingress Link.  
 - NGINX Ingress Controller.  
 - BIG-IP Instance.  
-- BIG-IP Controller Ingress Services.  
+- BIG-IP Container Ingress Services.  
 - F5 Ingress Link.  
 
 **Image source**: [F5 Clouddocs](https://clouddocs.f5.com/containers/latest/userguide/ingresslink/)  
@@ -9,11 +9,11 @@ In this section, you create a F5 Ingress Link.
 ![F5 Ingress Link](ingress-link-diagram.png)   
 
 # Pre-requisites:
-- You must have performed all the steps in the parent directory to create a BIG-IP instance and BIG-IP Controller Ingress Service.  
+- You must have performed all the steps in the parent directory to create a BIG-IP instance and BIG-IP Container Ingress Service.  
 - The BIG-IP CIS is working in nodeport mode.
 
 # Steps:
-To create F5 Ingress Link, create NGINX ingress controller and BIG-IP Controller Ingress Service first.  
+To create F5 Ingress Link, create NGINX ingress controller and BIG-IP Container Ingress Service first.  
 ## Create NGINX ingress controller.   
 1. Download the *create-nginx-ingress.sh* script.  
 2. Run the script:  
@@ -21,7 +21,7 @@ To create F5 Ingress Link, create NGINX ingress controller and BIG-IP Controller
    - ./create-nginx-ingress.sh   
    OR simply copy and paste the commands in the script all at together.   
    
-## Modify existing BIG-IP Controller Ingress Service.  
+## Modify existing BIG-IP Container Ingress Service.  
 For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode. 
 1. Delete the AS3 and BIG-IP CIS created previously in the parent [bigip-ctrl-ingress dir](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress). And make a new copy of the cis-deployment file for F5 Ingresslink.  
 ``kubectl delete -f as3.yaml``     
@@ -65,7 +65,3 @@ NGINX ingress controller, BIG-IP CIS, BIG-IP instance and F5 Ingress link are de
    - Delete.  
 
 
-
-
-
- 
