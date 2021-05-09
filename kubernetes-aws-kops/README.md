@@ -42,7 +42,7 @@ For the explanation on the commands, refer to [Creating a cluster](https://kuber
 ``export SSH_PUBLIC_KEY=~/.ssh/id_rsa.pub``  
 
    ``#Set up S3 store to store cluster data``  
-   ``aws s3 mb s3://clusters.dev.example.com``  
+   ``aws s3 mb $KOPS_STATE_STORE``  
   
    ``#Apply the cluster-config yaml file. You may want to view the settings first.``  
    ``kops create -f cluster-config.yaml``  
