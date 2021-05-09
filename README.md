@@ -2,9 +2,9 @@
 This repository is a step by step guide for the QUICK deployment of NGINX Ingress Controller or BIG-IP Container Ingress Service for Kubernetes.  
 
 ## Map:
+***NOTE**: eksctl will take around 25-30mins to create a full k8 cluster. If you do not need all the k8 resources eksctl creates, use/go to [kops](https://github.com/laul7klau/kubernetes-aws/tree/main/kubernetes-aws-kops) (5-8mins).*
 - **kubernetes-aws-eksctl**:  
   Perform the steps in this README.md to first deploy a Kubernetes cluster on AWS using eksctl.  
-  ***NOTE**: eksctl will take around 25-30mins to create a full k8 cluster. If you do not need all the k8 resources eksctl creates, use/go to [kops](https://github.com/laul7klau/kubernetes-aws/tree/main/kubernetes-aws-kops) (5-8mins).*
      - **nginx-ingress**: Perform the steps here to deploy NGINX ingress controller.  
      OR
      - **bigip-ctrl-ingress**: Perform the steps here if you want to deploy BIG-IP CIS.  
