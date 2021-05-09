@@ -37,7 +37,7 @@ For the explanation on the commands, refer to [Creating a cluster](https://kuber
 ``aws iam create-access-key --user-name kops``   
   
 2. Copy and paste the following commands to set up your cluster. (Replace the *$NAME* of the cluster if you want)  
-``export NAME=dev.k8s.local``   
+``export NAME=dev112233aabbcc.k8s.local``   
 ``export KOPS_STATE_STORE=s3://$NAME``  
 ``export SSH_PUBLIC_KEY=~/.ssh/id_rsa.pub``  
 
