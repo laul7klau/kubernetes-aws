@@ -24,13 +24,8 @@ This repository is a step by step guide for the QUICK deployment of NGINX Ingres
 For the explanation on the commands, refer to [Creating a cluster](https://kubernetes.io/docs/setup/production-environment/tools/kops/).  
 
 ## Steps:
-1. Copy and paste the following commands: (Replace the *$NAME* of the cluster if you want)   
-``export NAME=dev.k8s.local``   
-``export KOPS_STATE_STORE=s3://$NAME``  
-``export SSH_PUBLIC_KEY=~/.ssh/id_rsa.pub``    
-
-2. Copy and paste the following commands to set up your cluster.   
-``#Setup iam roles in AWS``
+1. Set up iam roles in AWS by copying and pasting the following:   
+``#Setup iam roles in AWS``   
 ``aws iam create-group --group-name kops``  
 ``aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess --group-name kops``  
 ``aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonRoute53FullAccess --group-name kops``  
@@ -39,8 +34,13 @@ For the explanation on the commands, refer to [Creating a cluster](https://kuber
 ``aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonVPCFullAccess --group-name kops``  
 ``aws iam create-user --user-name kops``  
 ``aws iam add-user-to-group --user-name kops --group-name kops``  
-``aws iam create-access-key --user-name kops``  
-   
+``aws iam create-access-key --user-name kops``   
+  
+2. Copy and paste the following commands to set up your cluster. (Replace the *$NAME* of the cluster if you want)  
+``export NAME=dev.k8s.local``   
+``export KOPS_STATE_STORE=s3://$NAME``  
+``export SSH_PUBLIC_KEY=~/.ssh/id_rsa.pub``  
+
    ``#Set up S3 store to store cluster data``  
    ``aws s3 mb s3://clusters.dev.example.com``  
   
