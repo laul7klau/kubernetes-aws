@@ -36,9 +36,9 @@ For the explanation on the commands, refer to [Creating a cluster](https://kuber
 ``aws iam add-user-to-group --user-name kops --group-name kops``  
 ``aws iam create-access-key --user-name kops``   
   
-2. Copy and paste the following commands to set up your cluster.     
+2. Copy and paste the following commands to create your cluster.     
 **NOTE: Replace the *CLUSTER_NAME* of the cluster if you want, but $NAME must give rise to a unique name for S3 bucket in AWS. Edit the NAME if the S3 name already exists.**  
-``export CLUSTER_NAME=dev112233aabbcc``    
+``export CLUSTER_NAME=dev888clustername``    
 ``export NAME=$CLUSTER_NAME.k8s.local``   
 ``export KOPS_STATE_STORE=s3://$NAME``  
 ``export SSH_PUBLIC_KEY=~/.ssh/id_rsa.pub``  
