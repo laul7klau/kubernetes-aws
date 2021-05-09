@@ -57,8 +57,10 @@ For the explanation on the commands, refer to [Creating a cluster](https://kuber
    For more information, refer to [stackoverflow link](https://stackoverflow.com/questions/66341494/kops-1-19-reports-error-unauthorized-when-interfacing-with-aws-cluster).  
 
 ## Verification:  
-You should observe the following output on *kops validate cluster*. 1 master and 3 nodes will be created.:  
-```Validating cluster dev.iexample.k8s.local
+You should observe the following output. 1 master and 3 nodes will be created.:  
+```
+$ kops validate cluster $NAME
+Validating cluster dev.iexample.k8s.local
 
 INSTANCE GROUPS
 NAME			ROLE	MACHINETYPE	MIN	MAX	SUBNETS
@@ -66,7 +68,7 @@ master-us-west-2a	Master	t3.medium	1	1	us-west-2a
 nodes-us-west-2a	Node	t3.medium	3	3	us-west-2a
 
 [...]
-Your cluster dev.iexample.k8s.local is ready    
+Your cluster dev.k8s.local is ready    
 ```
 ## Destroy:  
 Enter the following command:  
