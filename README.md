@@ -1,9 +1,10 @@
-# kubernetes-aws
+# kubernetes-aws-eksctl
 This repository is a step by step guide for the QUICK deployment of NGINX Ingress Controller or BIG-IP Container Ingress Service for Kubernetes.  
 
-Map:
-- **kubernetes-aws**:  
-  Perform the steps in this README.md first to first deploy a Kubernetes cluster on AWS.    
+## Map:
+- **kubernetes-aws-eksctl**:  
+  Perform the steps in this README.md to first deploy a Kubernetes cluster on AWS using eksctl.  
+  ***NOTE**: eksctl will take around 25-30mins to create a full k8 cluster. If you do not need all the k8 resources eksctl creates, use/go to [kops](https://github.com/laul7klau/kubernetes-aws/tree/main/kubernetes-aws-kops) (5-8mins).*
      - **nginx-ingress**: Perform the steps here to deploy NGINX ingress controller.  
      OR
      - **bigip-ctrl-ingress**: Perform the steps here if you want to deploy BIG-IP CIS.  
@@ -72,7 +73,7 @@ Select the nodegroup stacks, select Delete.
 Select the Kubernetes cluster, select Delete.  
 
 ## What's next:  
-- Go to the sub directory, *nginx-ingress*, to create NGINX Ingress Controller.    
+- Go to the sub directory, [nginx-ingress](https://github.com/laul7klau/kubernetes-aws/tree/main/nginx-ingress), to create NGINX Ingress Controller.    
 OR
-- Go to the sub directory *bigip-ctrl-ingress* to create the BIG-IP Controller Ingress Service, CIS.  
+- Go to the sub directory [bigip-ctrl-ingress](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress) to create the BIG-IP Controller Ingress Service, CIS.  
   -  Then go to the sub-sub directory *Ingress link*, to create the NGINX Ingress Controller and F5 Ingress Link.  
