@@ -38,7 +38,7 @@ For the explanation on the commands, refer to [Creating a cluster](https://kuber
   
 2. Copy and paste the following commands to create your cluster.     
 **NOTE: Replace the *CLUSTER_NAME* of the cluster if you want, but $NAME must give rise to a unique name for S3 bucket in AWS. If unsure, do not make any edits.**   
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/kubernetes-aws-kops/cluster-config.tpl"``   
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/kubernetes-aws-kops/cluster-config.tpl``   
 ``export CLUSTER_NAME=dev888clustername``    
 ``export NAME=$CLUSTER_NAME.k8s.local``   
 ``export KOPS_STATE_STORE=s3://$NAME``  
