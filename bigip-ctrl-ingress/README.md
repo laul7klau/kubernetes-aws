@@ -9,7 +9,8 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
 ### Create the BIG-IP instance
 1. From the K8 cluster created, gather and record down the following information:
    - **VPC:** ID where eksctl deployed the k8 cluster. Go to Services > VPC
-   - **Subnet ID:** to deploy the BIG-IP instance. Go to Services > Subnets. Example: Subnet ID of  eksctl-<name>-cluster/SubnetPublicUSWEST2A
+   - **Subnet ID:** to deploy the BIG-IP instance. Go to Services > VPC > Subnets.   
+     Example: Subnet ID of  eksctl-<name>-cluster/SubnetPublicUSWEST2A 
 
 2. Enter the following to download the script to deploy a 1 NIC PAYG BIG-IP instance.  
    ``wget https://raw.githubusercontent.com/F5Networks/f5-aws-cloudformation/master/supported/standalone/1nic/existing-stack/payg/deploy_via_bash.sh``  
