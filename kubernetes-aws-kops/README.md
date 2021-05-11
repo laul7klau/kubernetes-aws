@@ -1,7 +1,7 @@
 # kubernetes-aws-kops
 This repository is a step by step guide for the QUICK deployment of NGINX Ingress Controller or BIG-IP Container Ingress Service for Kubernetes.  
 
-**NOTE**: *kops* needs only 5-8 mins to create a k8 cluster. However, if you need some AWS k8 resources *eksctl* creates, go to [ekctl](https://github.com/laul7klau/kubernetes-aws).   
+**NOTE**: *kops* needs only 5-8 mins to create a k8 cluster. However, if you need some AWS k8 resources *eksctl* creates (such as an [EKS cluster managed by Amazon EKS control plane](https://docs.aws.amazon.com/eks/latest/userguide/clusters.html)), go to [eksctl](https://github.com/laul7klau/kubernetes-aws).   
 
 ## Repository Map:  
 - **kubernetes-aws**:  
@@ -78,7 +78,11 @@ Your cluster dev.k8s.local is ready
 ```
 ## Destroy:  
 Enter the following command:  
-``kops delete cluster $NAME --yes``   
+``kops delete cluster $NAME --yes`` 
+``#Below deletes the S3 bucket you created previously. Do not run this if your bucket stores information other than that from this cluster.``   
+``aws s3 rm s3://$NAME --recursive``   
+``aws s3 rb s3://$NAME``   
+
 
 ## What's next:  
 - Go to the sub directory, [nginx-ingress](https://github.com/laul7klau/kubernetes-aws/tree/main/nginx-ingress), to create NGINX Ingress Controller.    
