@@ -52,10 +52,10 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
 
 2. *cis-deployment.yaml*: 
    - Fill in the value of "--bigip-url" in  with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
-   - Configure the **"--pool-member-type=cluster"** field in the *cis-deployment.yaml* file.  
+   - Verify that **"--pool-member-type=nodeport"** in the *cis-deployment.yaml* file.  
      - For CIS nodeport deployment, set this to *nodeport*.   
      - For CIS clusterIP deployment, set this to *cluster*.  
-3. *as3.yaml*: Fill in the value of the "virtualAddresses" value. 
+3. *as3.yaml*: Fill in the value of the "virtualAddresses" value.    
 This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.   
 4. Add the security **node** group to the BIG-IP instance.  
    1. Go to Services > EC2 > Instances   
@@ -109,7 +109,7 @@ Replace
   [...]   
 
 ## What's next:  
-Go to the sub directory *ingresslink*, to create NGINX ingress controller and F5 Ingress Link.  
+Go to the sub directory [*ingresslink*](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress/ingressLink), to create NGINX ingress controller and F5 Ingress Link.  
 
 ## Destroy
 1. Copy and paste the following commands:  
