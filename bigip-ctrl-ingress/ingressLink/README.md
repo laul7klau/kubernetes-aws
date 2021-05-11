@@ -9,8 +9,8 @@ In this section, you create a F5 Ingress Link.
 ![F5 Ingress Link](ingress-link-diagram.png)   
 
 # Pre-requisites:
-- You must have performed all the steps in the parent directory to create a BIG-IP instance and BIG-IP Container Ingress Service.  
-- The BIG-IP CIS is working in nodeport mode.
+- You must have performed all the steps in the parent directory [bigip-ctlr-ingress](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress) to create a BIG-IP instance and BIG-IP Container Ingress Service.  
+- The BIG-IP CIS is working.
 
 # Steps:
 To create F5 Ingress Link, create NGINX ingress controller and BIG-IP Container Ingress Service first.  
@@ -26,7 +26,7 @@ For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode.
 1. Delete the AS3 and BIG-IP CIS created previously in the parent [bigip-ctrl-ingress dir](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress). And make a new copy of the cis-deployment file for F5 Ingresslink.  
 ``kubectl delete -f as3.yaml``     
 ``cp cis-deployment.yaml cis-ingresslink-deployment.yaml``  
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink.yaml``    
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/config/ingresslink.yaml``    
 ``kubectl delete -f cis-deployment.yaml``
 
 2. Edit  
@@ -40,9 +40,9 @@ For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode.
    - Follow steps 4 and 5 in [Lab4.1 BIG-IP Setup](https://clouddocs.f5.com/training/community/containers/html/class1/module4/lab1.html) to create the iRule *Proxy_Protocol_iRule* on the BIG-IP instance.  
 2. Copy and paste the following commands:  
 
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/customresourcedefinitions.yaml``     
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/config/customresourcedefinitions.yaml``     
 
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/ingresslink-customresourcedefinition.yaml``   
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/config/ingresslink-customresourcedefinition.yaml``   
 
 ``kubectl apply -f cis-ingresslink-deployment.yaml``  
 ``kubectl apply -f ingresslink-customresourcedefinition.yaml``    
