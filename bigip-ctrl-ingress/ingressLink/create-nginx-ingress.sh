@@ -7,7 +7,7 @@ cp ../examples/complete-example/cafe.yaml .
 cp ../examples/complete-example/cafe-secret.yaml .
 wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/nginx-ingress/config/cafe-ingress.yaml
 wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/nginx-ingress/config/nginx-config.yaml
-wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/nodeport/config/nodeport.yaml 
+wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/config/nodeport.yaml 
 #Install Ingress Controller per https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests
 kubectl apply -f common/ns-and-sa.yaml
 kubectl apply -f rbac/rbac.yaml
