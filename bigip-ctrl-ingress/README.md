@@ -20,11 +20,14 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
 3. Upload the public key you generated in the previous procedure (kubernetes-aws directory) when creating the kubernetes cluster. If you didn't, simply run *ssh-keygen*.  
 ```aws ec2 import-key-pair --key-name mykey --public-key-material fileb://~/.ssh/id_rsa.pub```
 
-4. Fill in the ???subnet ID and ???VPC ID from step 1 in the command below and run the script.    
-``./deploy_via_bash.sh --stackName bigipstack --licenseType Hourly --sshKey mykey --subnet1Az1 subnet-??? --imageName Good200Mbps --restrictedSrcAddressApp 0.0.0.0/0 --Vpc vpc-??? --instanceType m5.large --restrictedSrcAddress 0.0.0.0/0``  
-If the task takes longer than 5mins, you may observe the following error:  
-```In order to use this AWS Marketplace product you need to accept terms and subscribe. To do so please visit https://aws.amazon.com/marketplace/pp?sku=5pooknn8bmapsmdkegu5ikyng (Service: AmazonEC2; Status Code: 401; ```   
-Visit the link in your error message to accept the terms and subscribe. This is required only once.
+4. Fill in the ???subnet ID and ???VPC ID from step 1 in the command below and run the command below:   
+``BIGIP_SUBNET_ID=???``  
+``BIGIP_VPC_ID=???``   
+``./deploy_via_bash.sh --stackName bigipstack --licenseType Hourly --sshKey mykey --subnet1Az1 $BIGIP_SUBNET_ID --imageName Good200Mbps --restrictedSrcAddressApp 0.0.0.0/0 --Vpc $BIGIP_VPC_ID --instanceType m5.large --restrictedSrcAddress 0.0.0.0/0``  
+
+    If the task takes longer than 5mins, you may observe the following error:  
+    ```In order to use this AWS Marketplace product you need to accept terms and subscribe. To do so please visit https://aws.amazon.com/marketplace/pp?sku=5pooknn8bmapsmdkegu5ikyng (Service: AmazonEC2; Status Code: 401; ```   
+    Visit the link in your error message to accept the terms and subscribe. This is required only once.
 
 #### BIG-IP instance tasks. 
 
@@ -42,17 +45,18 @@ Visit the link in your error message to accept the terms and subscribe. This is 
 #### Configure the CIS deployment files:  
 1. Copy and paste the following commands:   
 
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/cis-deployment.yaml``  
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/as3.yaml``  
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/f5-hello-world-deployment.yaml``  
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/f5-hello-world-service.yaml``  
+     ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/cis-deployment.yaml``  
+     ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/as3.yaml``  
+     ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/f5-hello-world-deployment.yaml``  
+     ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/f5-hello-world-service.yaml``  
 
 2. *cis-deployment.yaml*: 
    - Fill in the value of "--bigip-url" in  with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
    - Configure the **"--pool-member-type=cluster"** field in the *cis-deployment.yaml* file.  
      - For CIS nodeport deployment, set this to *nodeport*.   
      - For CIS clusterIP deployment, set this to *cluster*.  
-3. *as3.yaml*: Fill in the value of the "virtualAddresses" value. This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.   
+3. *as3.yaml*: Fill in the value of the "virtualAddresses" value. 
+This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.   
 4. Add the security **node** group to the BIG-IP instance.  
    1. Go to Services > EC2 > Instances   
    2. Select Name of BIG-IP instance.  
@@ -66,25 +70,25 @@ Visit the link in your error message to accept the terms and subscribe. This is 
 #### Create and deploy BIG-IP Container Ingress Service and application pods.  
 1. Replace the ???? chars in the next line with the your BIG-IP password. 
 
-``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``  
+    ``kubectl create secret generic f5-bigip-ctlr-login -n kube-system --from-literal=username=admin --from-literal=password=????``  
 
 2. Copy and paste the following commands:     
 
-``kubectl create -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml``  
+    ``kubectl create -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml``  
 
-``kubectl create serviceaccount bigip-ctlr -n kube-system``   
-``kubectl create -f cis-deployment.yaml``  
+    ``kubectl create serviceaccount bigip-ctlr -n kube-system``   
+    ``kubectl create -f cis-deployment.yaml``  
 
-``#Create application pods and services ``  
-``kubectl create -f f5-hello-world-deployment.yaml``  
-``kubectl create -f f5-hello-world-service.yaml`` 
+    ``#Create application pods and services ``  
+    ``kubectl create -f f5-hello-world-deployment.yaml``  
+    ``kubectl create -f f5-hello-world-service.yaml`` 
   
-``#Create as3 definition to configure BIG-IP ``  
-``kubectl create -f as3.yaml``  
+    ``#Create as3 definition to configure BIG-IP ``  
+    ``kubectl create -f as3.yaml``  
 
 BIG-IP Container Ingress Service is deployed.  
 
-#### Implement Cluster IP mode:
+#### Change from Nodeport to Cluster IP mode:
 The setup is currently running in Nodeport mode. See the verification section below to verify the nodeport vs clusterIP set up.  
 To switch to ClusterIP mode, run:  
 ``kc edit -f cis-deployment.yaml -n kube-system``  
@@ -110,13 +114,13 @@ Go to the sub directory *ingresslink*, to create NGINX ingress controller and F5
 ## Destroy
 1. Copy and paste the following commands:  
 
-``kubectl delete -f as3.yaml``  
-``kubectl delete -f f5-hello-world-deployment.yaml``  
-``kubectl delete -f f5-hello-world-service.yaml``   
-``kubectl delete -f cis-deployment.yaml``  
-``kubectl delete -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml``  
-``kubectl delete serviceaccount bigip-ctlr -n kube-system``  
-``kubectl delete secret f5-bigip-ctlr-login -n kube-system``  
+    ``kubectl delete -f as3.yaml``  
+    ``kubectl delete -f f5-hello-world-deployment.yaml``  
+    ``kubectl delete -f f5-hello-world-service.yaml``   
+    ``kubectl delete -f cis-deployment.yaml``  
+    ``kubectl delete -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml``  
+    ``kubectl delete serviceaccount bigip-ctlr -n kube-system``  
+    ``kubectl delete secret f5-bigip-ctlr-login -n kube-system``  
  
 2. On AWS portal, destroy the BIG-IP stack.  
    - Go to CloudFormation > Stacks > Name-of-Stack  
