@@ -12,6 +12,8 @@ This repository is a step by step guide for the QUICK deployment of NGINX Ingres
      - [**bigip-ctrl-ingress**](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress): Perform the steps here if you want to deploy BIG-IP CIS.  
        - [**ingressLink**](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress/ingressLink): Create a F5 Ingress Link with the BIG-IP CIS & the NGINX ingress controller.  
 
+<img src="https://github.com/laul7klau/kubernetes-aws/blob/main/kubernetes-aws-kops/kops-cluster.png" width="70%" height="40%">
+
 ## Pre-requisites:
 1. Install *aws cli* on your client device. Refer to [Installing AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 2. Configure your AWS credentials.
