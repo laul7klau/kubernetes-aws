@@ -1,5 +1,7 @@
 This section provides a one-command quick deployment of the NGINX ingress controller. 
 The commands in the *create-ingress.sh* script implements the steps in the [NGINX ingress controller guide](https://github.com/laul7klau/kubernetes-aws/edit/main/nginx/README.md) and [NGINX example in Github](https://github.com/nginxinc/kubernetes-ingress/tree/master/examples/complete-example).  
+
+
 <img src="https://github.com/laul7klau/kubernetes-aws/blob/main/nginx-ingress/NginxIngress.png" width="70%" height="40%">
 
 ## Pre-requisites:
