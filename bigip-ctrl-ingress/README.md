@@ -1,6 +1,10 @@
 This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. This section creates the following:
 - [BIG-IP instance](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress#create-the-big-ip-instance)
-- [BIG-IP Container Ingress Service](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress#create-the-big-ip-controller-ingress-service)
+- [BIG-IP Container Ingress Service](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress#create-the-big-ip-controller-ingress-service)  
+
+
+<img src="https://github.com/laul7klau/kubernetes-aws/blob/main/bigip-ctrl-ingress/BIGIP-CIS.png" width="70%" height="40%">
+
 
 # Pre-requisites
 - You have performed the steps in the previous directory to create a Kubernetes cluster in AWS.
