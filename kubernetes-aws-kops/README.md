@@ -17,7 +17,7 @@ This repository is a step by step guide for the QUICK deployment of NGINX Ingres
 2. Configure your AWS credentials.
    - Go to IAM role > Users > <User> > Security Credentials, select **Create access key**.
    - Enter *aws configure*
-3. Generate SSH key pair. The key is referenced by kube-cluster.yaml to enable login to kubernetes nodes.
+3. Generate SSH key pair. The key is referenced by cluster-config.yaml to enable login to kubernetes nodes.
    - Enter: *ssh-keygen*
 4. Install [kubectl and kops](https://kops.sigs.k8s.io/getting_started/install/).  
 
