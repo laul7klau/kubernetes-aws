@@ -68,13 +68,21 @@ You should observe the following output. 1 master and 3 nodes will be created.:
 $ kops validate cluster $NAME
 Validating cluster dev.iexample.k8s.local
 
+Validating cluster dev888clustername.k8s.local
+
 INSTANCE GROUPS
 NAME			ROLE	MACHINETYPE	MIN	MAX	SUBNETS
-master-us-west-2a	Master	t3.medium	1	1	us-west-2a
+master-us-west-2a	Master	t3.xlarge	1	1	us-west-2a
 nodes-us-west-2a	Node	t3.medium	3	3	us-west-2a
 
-[...]
-Your cluster dev.k8s.local is ready    
+NODE STATUS
+NAME						ROLE	READY
+ip-172-20-44-11.us-west-2.compute.internal	node	True
+ip-172-20-47-227.us-west-2.compute.internal	node	True
+ip-172-20-49-213.us-west-2.compute.internal	master	True
+ip-172-20-51-114.us-west-2.compute.internal	node	True
+
+Your cluster dev888clustername.k8s.local is ready   
 ```
 ## Destroy:  
 Enter the following command:  
