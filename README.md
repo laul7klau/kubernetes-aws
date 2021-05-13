@@ -23,13 +23,16 @@ This repository is a step by step guide for the QUICK deployment of NGINX Ingres
    ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/kube-cluster.yaml``
 2. Create the cluster by entering:  
    ``eksctl create cluster -f kube-cluster.yaml``   
-3. Set up the kubernetes dashboard.  
-   - chmod u+x setup-dashboard.sh
-   - ./setup-dashboard.sh
-   - Access the dashboard using the link and token from the output of the script.
 
 The cluster creation process on AWS will typically take 25-30mins. 
 
+
+**OPTIONAL**:
+Set up the kubernetes dashboard.  
+   1. chmod u+x setup-dashboard.sh
+   2. ./setup-dashboard.sh
+   3. Access the dashboard using the link and token from the output of the script.   
+   
 ## Verification:
 The following Kubernetes objects are created by the default kube-cluster.yaml
 - 1 Kubernetes cluster.
