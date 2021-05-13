@@ -14,14 +14,6 @@ In this section, you create a F5 Ingress Link.
 
 # Steps:
 To create F5 Ingress Link, create NGINX ingress controller and BIG-IP Container Ingress Service first.  
-## Create NGINX ingress controller.   
-1. Download the *create-nginx-ingress.sh* script.  
-``https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/create-nginx-ingress.sh``   
-2. Run the script:  
-   ``chmod u+x create-nginx-ingress.sh``    
-   ``./create-nginx-ingress.sh``   
-   OR simply copy and paste the commands in the script all together.   
-   
 ## Modify existing BIG-IP Container Ingress Service.  
 For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode. 
 1. Delete the AS3 and BIG-IP CIS created previously in the parent [bigip-ctrl-ingress dir](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress). And make a new copy of the cis-deployment file for F5 Ingresslink.  
@@ -50,6 +42,14 @@ For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode.
 ``kubectl apply -f customresourcedefinitions.yaml``     
 ``kubectl apply -f ingresslink.yaml``    
 
+## Create NGINX ingress controller.   
+1. Download the *create-nginx-ingress.sh* script.  
+``https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/create-nginx-ingress.sh``   
+2. Run the script:  
+   ``chmod u+x create-nginx-ingress.sh``    
+   ``./create-nginx-ingress.sh``   
+   OR simply copy and paste the commands in the script all together.  
+   
 NGINX ingress controller, BIG-IP CIS, BIG-IP instance and F5 Ingress link are deployed.
 
 # Verification:
