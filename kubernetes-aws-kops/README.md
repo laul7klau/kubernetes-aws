@@ -87,8 +87,8 @@ ip-172-20-51-114.us-west-2.compute.internal	node	True
 Your cluster dev888clustername.k8s.local is ready   
 ```
 ## Destroy:  
-Enter the following command:  
-``kops delete cluster $NAME --yes`` 
+Enter the following command:   
+``kops delete cluster $NAME --yes``   
 ``#Below deletes the S3 bucket you created previously. Do not run this if your bucket stores information other than that from this cluster.``   
 ``aws s3 rm s3://$NAME --recursive``   
 ``aws s3 rb s3://$NAME``   
