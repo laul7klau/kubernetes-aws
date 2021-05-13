@@ -51,13 +51,14 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
      ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/f5-hello-world-deployment.yaml``  
      ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/f5-hello-world-service.yaml``  
 
-2. *cis-deployment.yaml*: 
-   - Fill in the value of "--bigip-url" in  with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
+2. **cis-deployment.yaml**: 
+   - Fill in the value of "--bigip-url" with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
    - Verify that **"--pool-member-type=nodeport"** in the *cis-deployment.yaml* file.  
      - For CIS nodeport deployment, set this to *nodeport*.   
      - For CIS clusterIP deployment, set this to *cluster*.  
-3. *as3.yaml*: Fill in the value of the "virtualAddresses" value.    
-This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.   
+3. **as3.yaml**:   
+   Fill in the value of the "virtualAddresses".    
+   This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.   
 4. Add the security **node** group to the BIG-IP instance.  
    1. Go to Services > EC2 > Instances   
    2. Select Name of BIG-IP instance.  
@@ -87,12 +88,13 @@ This is the IP address of the virtual server on the BIG-IP. For single NIC, this
     ``#Create as3 definition to configure BIG-IP ``  
     ``kubectl create -f as3.yaml``  
 
-BIG-IP Container Ingress Service is deployed.  
+BIG-IP Container Ingress Service is deployed!  
 
-#### Change from Nodeport to Cluster IP mode:
+Optional: Change from Nodeport to Cluster IP mode   
 The setup is currently running in Nodeport mode. See the verification section below to verify the nodeport vs clusterIP set up.  
 To switch to ClusterIP mode, run:  
 ``kc edit -f cis-deployment.yaml -n kube-system``  
+
 Replace 
 ``- --pool-member-type=nodeport``  with   ``- --pool-member-type=cluster``   
 
