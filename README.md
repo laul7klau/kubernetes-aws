@@ -32,11 +32,11 @@ The cluster creation process on AWS will typically take 25-30mins.
 
 
 *Optional*:
-Set up the kubernetes dashboard.  
-   1. ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/setup-dashboard.sh``   
-   2. ``chmod u+x setup-dashboard.sh``  
-   3. ``./setup-dashboard.sh``   
-   4.  ``Access the dashboard using the link and token from the output of the script.``   
+Set up the kubernetes dashboard by copying and pasting the following:  
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/setup-dashboard.sh``   
+``chmod u+x setup-dashboard.sh``  
+``./setup-dashboard.sh``   
+``Access the dashboard using the link and token from the output of the script.``   
    
 ## Verification:
 The following Kubernetes objects are created by the default kube-cluster.yaml
