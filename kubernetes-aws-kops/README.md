@@ -1,6 +1,8 @@
 # kubernetes-aws-kops
 This repository is a step by step guide for the QUICK deployment of NGINX Ingress Controller or BIG-IP Container Ingress Service for Kubernetes.  
 
+Note: The deployment in this GitHub repository is for demo or experimental purposes and not meant for production use or supported by F5 Support. For example, the Kubernetes nodes have public elastic IP addresses for easy access for troubleshooting.
+
 **NOTE**: *kops* needs only 5-8 mins to create a k8 cluster. However, if you need some AWS k8 resources *eksctl* creates (such as an [EKS cluster managed by Amazon EKS control plane](https://docs.aws.amazon.com/eks/latest/userguide/clusters.html)), go to [eksctl](https://github.com/laul7klau/kubernetes-aws).   
 
 ## Repository Map:  
