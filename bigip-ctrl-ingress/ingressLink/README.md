@@ -18,8 +18,8 @@ To create F5 Ingress Link, create NGINX ingress controller and BIG-IP Container 
 1. Download the *create-nginx-ingress.sh* script.  
 ``https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/create-nginx-ingress.sh``   
 2. Run the script:  
-   - chmod u+x create-ingress.sh    
-   - ./create-nginx-ingress.sh   
+   ``chmod u+x create-ingress.sh``    
+   ``./create-nginx-ingress.sh``   
    OR simply copy and paste the commands in the script all together.   
    
 ## Modify existing BIG-IP Container Ingress Service.  
