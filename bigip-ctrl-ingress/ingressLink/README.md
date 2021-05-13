@@ -14,7 +14,7 @@ In this section, you create a F5 Ingress Link.
 
 # Steps:   
 ## Remove any AS3 and BIG-IP CIS objects. 
-Delete the AS3 and BIG-IP objects created previously in the parent [bigip-ctrl-ingress]directory(https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress). Copy and paste the following:   
+Delete the AS3 and BIG-IP objects created previously in the parent [bigip-ctrl-ingress](https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress)directory. Copy and paste the following:   
 ``kubectl delete -f as3.yaml``     
 ``sleep 2``   
 ``kubectl delete -f cis-deployment.yaml``   
@@ -28,9 +28,9 @@ To create F5 Ingress Link, create NGINX ingress controller followed by the BIG-I
    ``./create-nginx-ingress.sh``   
    OR simply copy and paste the commands in the script all together.  
    
-## Modify existing BIG-IP Container Ingress Service.  
+## Create F5 Ingress Link  
 For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode. 
-1. Delete the AS3 and BIG-IP CIS created previously in the parent [bigip-ctrl-ingress]directory(https://github.com/laul7klau/kubernetes-aws/tree/main/bigip-ctrl-ingress). And make a new copy of the cis-deployment file for F5 Ingresslink.  
+1. Make a new copy of the cis-deployment file for F5 Ingresslink.  
 ``cp cis-deployment.yaml cis-ingresslink-deployment.yaml``  
 ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/config/ingresslink.yaml``    
 
@@ -40,21 +40,20 @@ For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode.
    - *ingresslink.yaml*:  
       - Replace 'virtualServerAddress: "??????"' with the VS IP. For single NIC, this is the self IP address.  
 
-## Create F5 Ingress Link
-1. Create the following iRule on the BIG-IP instance:
+3. Create the following iRule on the BIG-IP instance:
    - Follow steps 4 and 5 in [Lab4.1 BIG-IP Setup](https://clouddocs.f5.com/training/community/containers/html/class1/module4/lab1.html) to create the iRule *Proxy_Protocol_iRule* on the BIG-IP instance.  
-2. Copy and paste the following commands:  
+4. Copy and paste the following commands:  
 
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/config/customresourcedefinitions.yaml``     
+   ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/config/customresourcedefinitions.yaml``     
 
-``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/config/ingresslink-customresourcedefinition.yaml``   
+   ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/config/ingresslink-customresourcedefinition.yaml``   
 
-``kubectl apply -f cis-ingresslink-deployment.yaml``  
-``kubectl apply -f ingresslink-customresourcedefinition.yaml``    
-``kubectl apply -f customresourcedefinitions.yaml``     
-``kubectl apply -f ingresslink.yaml``    
+   ``kubectl apply -f cis-ingresslink-deployment.yaml``  
+   ``kubectl apply -f ingresslink-customresourcedefinition.yaml``    
+   ``kubectl apply -f customresourcedefinitions.yaml``     
+   ``kubectl apply -f ingresslink.yaml``    
    
-NGINX ingress controller, BIG-IP CIS, BIG-IP instance and F5 Ingress link are deployed.
+NGINX ingress controller, BIG-IP CIS, BIG-IP instance and F5 Ingress link are deployed!
 
 # Verification:
 - In the BIG-IP instance, 2 virtual servers (ports 80, 443) should be created with 2 pools (80, 443). 
