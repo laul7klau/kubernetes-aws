@@ -1,5 +1,6 @@
 # kubernetes-aws-eksctl
 This repository is a step by step guide for the QUICK deployment of NGINX Ingress Controller or BIG-IP Container Ingress Service for Kubernetes.  
+Note: The deployment in the GitHub repository is for demo or experimental purposes and not meant for production use or supported by F5 Support.   
 
 ## Map:
 ***NOTE**: eksctl will take around 25-30mins to create a full k8 cluster. If you do not need all the k8 resources eksctl creates (such as an [EKS cluster managed by Amazon's EKS control plane](https://docs.aws.amazon.com/eks/latest/userguide/clusters.html)), use/go to [kops](https://github.com/laul7klau/kubernetes-aws/tree/main/kubernetes-aws-kops) (5-8mins).*
