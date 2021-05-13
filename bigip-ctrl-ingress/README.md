@@ -14,20 +14,19 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
 1. From the K8 cluster created, gather and record down the following information:
    - **VPC:** ID where eksctl deployed the k8 cluster. Go to Services > VPC
    - **Subnet ID:** to deploy the BIG-IP instance. Go to Services > VPC > Subnets.   
-     Example: Subnet ID of  eksctl: eksctl-<name>-cluster/SubnetPublicUSWEST2A or kops: us-west-2a.<name>.k8s.local
+     Example: Subnet ID of  eksctl: eksctl-<name>-cluster/SubnetPublicUSWEST2A or kops: us-west-2a.<name>.k8s.local.  
 
-2. Enter the following to download the script to deploy a 1 NIC PAYG BIG-IP instance.  
-   ``wget https://raw.githubusercontent.com/F5Networks/f5-aws-cloudformation/master/supported/standalone/1nic/existing-stack/payg/deploy_via_bash.sh``  
-
-   ``chmod u+x deploy_via_bash.sh``
-
-3. Upload the public key you generated in the previous procedure (kubernetes-aws directory) when creating the kubernetes cluster. If you didn't, simply run *ssh-keygen*.  
+2. Upload the public key you generated in the previous procedure (kubernetes-aws directory) when creating the kubernetes cluster. If you didn't, simply run *ssh-keygen*.  
 ```aws ec2 import-key-pair --key-name mykey --public-key-material fileb://~/.ssh/id_rsa.pub```
 
-4. Fill in the ???subnet ID and ???VPC ID from step 1 in the command below and run the command below:   
+3. Fill in the ???subnet ID and ???VPC ID from step 1 below and run the following by copying and pasting:   
 ``BIGIP_SUBNET_ID=???``  
-``BIGIP_VPC_ID=???``   
-``./deploy_via_bash.sh --stackName bigipstack --licenseType Hourly --sshKey mykey --subnet1Az1 $BIGIP_SUBNET_ID --imageName Good200Mbps --restrictedSrcAddressApp 0.0.0.0/0 --Vpc $BIGIP_VPC_ID --instanceType m5.large --restrictedSrcAddress 0.0.0.0/0``  
+``BIGIP_VPC_ID=???``      
+
+   ``wget https://raw.githubusercontent.com/F5Networks/f5-aws-cloudformation/master/supported/standalone/1nic/existing-stack/payg/deploy_via_bash.sh``  
+
+   ``chmod u+x deploy_via_bash.sh``  
+   ``./deploy_via_bash.sh --stackName bigipstack --licenseType Hourly --sshKey mykey --subnet1Az1 $BIGIP_SUBNET_ID --imageName Good200Mbps --restrictedSrcAddressApp 0.0.0.0/0 --Vpc $BIGIP_VPC_ID --instanceType m5.large --restrictedSrcAddress 0.0.0.0/0``  
 
     If the task takes longer than 5mins, you may observe the following error:  
     ```In order to use this AWS Marketplace product you need to accept terms and subscribe. To do so please visit https://aws.amazon.com/marketplace/pp?sku=5pooknn8bmapsmdkegu5ikyng (Service: AmazonEC2; Status Code: 401; ```   
