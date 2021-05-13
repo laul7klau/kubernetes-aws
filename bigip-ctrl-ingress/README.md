@@ -11,30 +11,28 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
 
 # Steps  
 ### Create the BIG-IP instance
-1. From the K8 cluster created, gather and record down the following information:
+1. Upload the public key you generated in the previous procedure (kubernetes-aws directory) when creating the kubernetes cluster. If you didn't, simply run *ssh-keygen*.  You will use this key to login to the BIG-IP.   
+```aws ec2 import-key-pair --key-name mykey --public-key-material fileb://~/.ssh/id_rsa.pub```
+
+2. Fill in the ???subnet ID and ???VPC ID below and run the following by copying and pasting:   
    - **VPC:** ID where eksctl deployed the k8 cluster. Go to Services > VPC
    - **Subnet ID:** to deploy the BIG-IP instance. Go to Services > VPC > Subnets.   
      Example: Subnet ID of  eksctl: eksctl-<name>-cluster/SubnetPublicUSWEST2A or kops: us-west-2a.<name>.k8s.local.  
-
-2. Upload the public key you generated in the previous procedure (kubernetes-aws directory) when creating the kubernetes cluster. If you didn't, simply run *ssh-keygen*.  
-```aws ec2 import-key-pair --key-name mykey --public-key-material fileb://~/.ssh/id_rsa.pub```
-
-3. Fill in the ???subnet ID and ???VPC ID from step 1 below and run the following by copying and pasting:   
-``BIGIP_SUBNET_ID=???``  
-``BIGIP_VPC_ID=???``      
+   
+   ``BIGIP_VPC_ID=???``   
+   ``BIGIP_SUBNET_ID=???``        
 
    ``wget https://raw.githubusercontent.com/F5Networks/f5-aws-cloudformation/master/supported/standalone/1nic/existing-stack/payg/deploy_via_bash.sh``  
 
    ``chmod u+x deploy_via_bash.sh``  
    ``./deploy_via_bash.sh --stackName bigipstack --licenseType Hourly --sshKey mykey --subnet1Az1 $BIGIP_SUBNET_ID --imageName Good200Mbps --restrictedSrcAddressApp 0.0.0.0/0 --Vpc $BIGIP_VPC_ID --instanceType m5.large --restrictedSrcAddress 0.0.0.0/0``  
 
-    If the task takes longer than 5mins, you may observe the following error:  
+3. Monitor the progress at Services > CloudFormation. Find the BIG-IP at Services > EC2 > Instances.   
+   If the task takes longer than 5mins, you may observe the following error:  
     ```In order to use this AWS Marketplace product you need to accept terms and subscribe. To do so please visit https://aws.amazon.com/marketplace/pp?sku=5pooknn8bmapsmdkegu5ikyng (Service: AmazonEC2; Status Code: 401; ```   
     Visit the link in your error message to accept the terms and subscribe. This is required only once.
 
-#### BIG-IP instance tasks. 
-
-1. Login to the BIG-IP
+4. Login to the BIG-IP
    - ``ssh -i ~/.ssh/id_rsa admin@<BIG-IP IP>``
    - ``bash``
    - Create a CIS partition
