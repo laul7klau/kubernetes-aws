@@ -11,7 +11,7 @@ Note: The deployment in this GitHub repository is for demo or experimental purpo
      OR
      - **bigip-ctrl-ingress**: Perform the steps here if you want to deploy BIG-IP CIS.  
 
-<img src="https://github.com/laul7klau/kubernetes-aws/blob/main/eksctl.png" width="70%" height="40%">
+<img src="https://github.com/laul7klau/kubernetes-aws/blob/main/eksctl-cluster.png" width="70%" height="40%">
 
 ## Pre-requisites:
 1. Install aws cli on your client device. Refer to [Installing AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
