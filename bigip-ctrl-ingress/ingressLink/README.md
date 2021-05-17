@@ -58,8 +58,7 @@ NGINX ingress controller, BIG-IP CIS, BIG-IP instance and F5 Ingress link are de
 # Verification:
 - In the BIG-IP instance, 2 virtual servers (ports 80, 443) should be created with 2 pools (80, 443). 
   - Each VS corresponds to the services declared in *'nodeport.yaml'* when creating the nginx-ingress controller. The selector in ingresslink.yaml must match the *'label'* in *'nodeport.yaml'*
-  - The iRule created in step 3 should automatically be associated with the VSs.
-  Note: the https VS does not have ssl profiles. SSL is terminated at the NGINX Ingress controller. In production, you should terminate SSL on the BIG=IP instance.  
+  - The BIG-IP is in SSL passthrough mode where the VS does not have ssl profiles. SSL is terminated at the NGINX Ingress controller. 
 - Access http://cafe.example.com/coffee and https://cafe.example.com/tea, where cafe.example.com is matched to the aws external IP of the BIG-IP instance in the host file. The coffee and tea app deployed with the NGINX ingress controller should display.
 
 # Destroy:
