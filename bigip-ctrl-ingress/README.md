@@ -14,7 +14,13 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
 1. Upload the public key you generated in the previous procedure (kubernetes-aws directory) when creating the kubernetes cluster. If you didn't, simply run *ssh-keygen*.  You will use this key to login to the BIG-IP.   
 ```aws ec2 import-key-pair --key-name mykey --public-key-material fileb://~/.ssh/id_rsa.pub```
 
-2. Fill in the ???subnet ID and ???VPC ID below and run the following by copying and pasting:   
+2. Subscribe to the BIG-IP image on Amazon marketplace.  
+   If this is the first time you're deploying this image, you must subscribe to the BIG-IP image on Amazon first:  
+   a. Go to [AWS Marketplace](https://aws.amazon.com/marketplace)   
+   b. Search the image used in this script E.g. *F5 BIG-IP Virtual Edition - GOOD (PAYG, 200Mbps)* and select it.   
+   c. Select **Continue to Subscribe**   
+   d. Select **Accept Terms**   
+3. Fill in the ???subnet ID and ???VPC ID below and run the following by copying and pasting:   
    - **VPC:** ID where eksctl deployed the k8 cluster. Go to Services > VPC
    - **Subnet ID:** to deploy the BIG-IP instance. Go to Services > VPC > Subnets.   
      Example: Subnet ID of  eksctl: eksctl-<name>-cluster/SubnetPublicUSWEST2A or kops: us-west-2a.<name>.k8s.local.  
@@ -27,12 +33,11 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
    ``chmod u+x deploy_via_bash.sh``  
    ``./deploy_via_bash.sh --stackName bigipstack --licenseType Hourly --sshKey mykey --subnet1Az1 $BIGIP_SUBNET_ID --imageName Good200Mbps --restrictedSrcAddressApp 0.0.0.0/0 --Vpc $BIGIP_VPC_ID --instanceType m5.large --restrictedSrcAddress 0.0.0.0/0``  
 
-3. Monitor the progress at Services > CloudFormation. Find the BIG-IP at Services > EC2 > Instances.   
-   If the task takes longer than 5mins, you may observe the following error:  
+4. Monitor the progress at Services > CloudFormation. Find the BIG-IP at Services > EC2 > Instances.   
     ```In order to use this AWS Marketplace product you need to accept terms and subscribe. To do so please visit https://aws.amazon.com/marketplace/pp?sku=5pooknn8bmapsmdkegu5ikyng (Service: AmazonEC2; Status Code: 401; ```   
     Visit the link in your error message to accept the terms and subscribe. This is required only once.
 
-4. Login to the BIG-IP
+5. Login to the BIG-IP
    - ``ssh -i ~/.ssh/id_rsa admin@<BIG-IP IP>``
    - ``bash``
    - Create a CIS partition
