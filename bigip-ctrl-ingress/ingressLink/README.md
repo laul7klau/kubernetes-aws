@@ -61,7 +61,8 @@ NGINX ingress controller, BIG-IP CIS, BIG-IP instance and F5 Ingress link are de
 - Access http://cafe.example.com/coffee and https://cafe.example.com/tea, where cafe.example.com is matched to the aws external IP of the BIG-IP instance in the host file. The coffee and tea app deployed with the NGINX ingress controller should display.
 
 # Destroy:
-1. Download and run the *delete-all.sh* OR copy and paste its commands.  
+1. Download and run the *delete-all.sh* OR copy and paste its commands.   
+   ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/delete-all.sh``    
 2. On AWS portal, destroy the BIG-IP stack.  
    - Go to CloudFormation > Stacks > Name-of-Stack. 
    - Delete.  
