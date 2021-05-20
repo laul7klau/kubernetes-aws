@@ -23,4 +23,4 @@ kubectl delete secret f5-bigip-ctlr-login -n kube-system
 kubectl delete -f f5-hello-world-deployment.yaml
 kubectl delete -f f5-hello-world-service.yaml
 
-echo "Manually remove the 'kubernetes-ingress' github directory: 'rm -f kubernetes-ingress'
+echo "Manually remove the 'kubernetes-ingress' github directory: 'rm -f kubernetes-ingress'"
