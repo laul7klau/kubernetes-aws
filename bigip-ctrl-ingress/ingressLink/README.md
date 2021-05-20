@@ -21,9 +21,8 @@ Delete the AS3 and BIG-IP objects created previously in the parent [bigip-ctrl-i
 
 To create F5 Ingress Link, create NGINX ingress controller followed by the BIG-IP Container Ingress Service.  
 ## Create NGINX ingress controller.   
-1. Download the *create-nginx-ingress.sh* script.  
-``https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/create-nginx-ingress.sh``   
-2. Run the script:  
+1. Download and run the *create-nginx-ingress.sh* script.  
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/ingressLink/create-nginx-ingress.sh``   
    ``chmod u+x create-nginx-ingress.sh``    
    ``./create-nginx-ingress.sh``   
    OR simply copy and paste the commands in the script all together.  
