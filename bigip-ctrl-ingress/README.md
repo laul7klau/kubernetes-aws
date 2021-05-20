@@ -53,14 +53,13 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
      ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/f5-hello-world-deployment.yaml``  
      ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/f5-hello-world-service.yaml``  
 
-2. **cis-deployment.yaml**: 
-   - Fill in the value of "--bigip-url" with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.  
-   - Verify that **"--pool-member-type=nodeport"** in the *cis-deployment.yaml* file.  
-     - For CIS nodeport deployment, set this to *nodeport*.   
-     - For CIS clusterIP deployment, set this to *cluster*.  
-3. **as3.yaml**:   
-   Fill in the value of the "virtualAddresses".    
-   This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.   
+2. Edit the following 2 files:  
+   -- **cis-deployment.yaml**:  
+      &nbsp;&nbsp;&nbsp;&nbsp;Fill in the value of "--bigip-url" with the self IP of the BIG-IP. This is the private IP address of the BIG-IP that the controller will contact. Using the external IP may work but is not secure.   
+
+   -- **as3.yaml**:   
+      &nbsp;&nbsp;&nbsp;&nbsp;Fill in the value of the "virtualAddresses".    
+      &nbsp;&nbsp;&nbsp;&nbsp;This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.   
 4. Add the security **node** group to the BIG-IP instance.  
    1. Go to Services > EC2 > Instances   
    2. Select Name of BIG-IP instance.  
