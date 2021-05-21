@@ -8,7 +8,8 @@ The commands in the *create-ingress.sh* script implements the steps in the [NGIN
 You must run the commands in the parent directory *kubernetes-aws* first to deploy a k8 cluster in AWS cloud which will also configure kube.config in your local directory.
 
 ## Steps:  
-Download the *create-ingress.sh* script  
+Copy and run the commands below:
+``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/nginx-ingress/create-ingress.sh``   
 ``chmod u+x create-ingress.sh``   
 ``./create-ingres.sh``     
 
