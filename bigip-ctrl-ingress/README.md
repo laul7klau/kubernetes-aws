@@ -31,6 +31,8 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
 
    ``chmod u+x deploy_via_bash.sh``  
    ``./deploy_via_bash.sh --stackName bigipstack --licenseType Hourly --sshKey mykey --subnet1Az1 $BIGIP_SUBNET_ID --imageName Good200Mbps --restrictedSrcAddressApp 0.0.0.0/0 --Vpc $BIGIP_VPC_ID --instanceType m5.large --restrictedSrcAddress 0.0.0.0/0``  
+   
+   *Note: If the command hangs and you do not see an output message immediately, it means the BIGIP_VPC_ID or BIGIP_SUBNET_ID values were not set. Set them and run the command again.*    
 
 4. Monitor the progress at **Services** > **CloudFormation**. Find the BIG-IP at Services > EC2 > Instances.   
 
