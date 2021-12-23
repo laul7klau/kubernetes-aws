@@ -17,13 +17,13 @@ Note: The deployment in this GitHub repository is for demo or experimental purpo
 1. Install aws cli on your client device. Refer to [Installing AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 2. Configure your AWS credentials.
    - Go to IAM role > Users > <User> > Security Credentials, select **Create access key**.
-   - Enter *aws configure*
+   - Enter *aws configure* on your control machine
 3. Generate SSH key pair. The key is referenced by kube-cluster.yaml to enable login to kubernetes nodes.
    - Enter: *ssh-keygen*
 4. Install **eksctl** on your client device to manage the k8 cluster. Refer to [Installing eksctl](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html).
 
-## Steps:
-1. Download *kube-cluster.yaml* which contains the basic configuration for a cluster on AWS. Refer to [eksctl yaml file examples](https://github.com/weaveworks/eksctl/tree/main/examples)  
+## Create EKS cluster in 2 Steps:
+1. Download *kube-cluster.yaml* which contains the basic configuration for a cluster on AWS. Edit the file if you don't want to use the defaults with help from [eksctl yaml file examples](https://github.com/weaveworks/eksctl/tree/main/examples)   
    ``wget https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/kube-cluster.yaml``
 2. Create the cluster by entering:  
    ``eksctl create cluster -f kube-cluster.yaml``   
