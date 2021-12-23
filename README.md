@@ -44,7 +44,8 @@ The following Kubernetes objects are created by the default kube-cluster.yaml
 - 2 public nodes as AWS instances. External IP addresses assigned.
 - 1 private node as AWS instance.  
   
-```$ kubectl get nodes. 
+```
+$ kubectl get nodes. 
 NAME                                           STATUS   ROLES    AGE   VERSION   
 ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0  
 ip-<IP>.us-west-2.compute.internal   Ready    <none>   43h   v1.19.6-eks-49a6c0  
