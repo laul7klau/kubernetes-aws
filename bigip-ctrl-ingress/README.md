@@ -89,6 +89,7 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
     ``kubectl create -f f5-hello-world-service.yaml`` 
   
     ``#Create as3 definition to configure BIG-IP ``  
+    ``sleep 3``  
     ``kubectl create -f as3.yaml``  
 
 BIG-IP Container Ingress Service is deployed!  
