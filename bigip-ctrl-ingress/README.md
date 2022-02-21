@@ -40,7 +40,7 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
    - ``ssh -i ~/.ssh/id_rsa admin@<BIG-IP IP>``
    - ``bash``
    - Create a CIS partition
-     ``tmsh create auth partition cispartition``
+     ``tmsh create auth partition cispartition``  (This will come in in a later lab)
    - Change admin password:  
      ``passwd``
    - Login to BIG-IP GUI *https://<BIG-IP IP>:8443*
@@ -61,7 +61,7 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
 
    -- **as3.yaml**:   
       &nbsp;&nbsp;&nbsp;&nbsp;Fill in the value of the "virtualAddresses".    
-      &nbsp;&nbsp;&nbsp;&nbsp;This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP.   
+      &nbsp;&nbsp;&nbsp;&nbsp;This is the IP address of the virtual server on the BIG-IP. For single NIC, this is  the "Private IPv4 address" associated to the external IP of the BIG-IP, which is also the self IP address of the BIG-IP.   
 4. Add the security **node** group to the BIG-IP instance.  
    1. Go to Services > EC2 > Instances   
    2. Select Name of BIG-IP instance.  
@@ -104,7 +104,7 @@ Replace
 ## Verification:   
 - Access the BIG-IP virtual server: http://??bigip external IP address??   
 - The following should be configured on the BIG-IP:
-  - New partition with virtual server, pool, and the Kubernetes nodes as pool members. 
+  - A New partition called **mypartition-name** is created with virtual server, pool, and the Kubernetes nodes as pool members. 
   - In CIS **nodeport**, the pool members are the Node IP addresses and port numbers are different ephemeral random port numbers  
   - In CIS **ClusterIP**, pool members are Pod IP addresses and port number is the one defined in the *f5-hello-world-deployment.yaml* file.  
 - The BIG-IP Controller is deployed as a pod in the kube-system namespace.  
