@@ -20,7 +20,8 @@ Note: The deployment in this GitHub repository is for demo or experimental purpo
 1. Install *aws cli* on your client device. Refer to [Installing AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 2. Configure your AWS credentials.
    - Go to IAM role > Users > <User> > Security Credentials, select **Create access key**.
-   - Enter *aws configure*
+   - Enter *aws configure*  
+     IMPT: Set default region to us-west-2. The rest of the scripts create resources in this region.
 3. Generate SSH key pair. The key is referenced by cluster-config.yaml to enable login to kubernetes nodes.
    - Enter: *ssh-keygen*
 4. Install [kubectl and kops](https://kops.sigs.k8s.io/getting_started/install/).  
