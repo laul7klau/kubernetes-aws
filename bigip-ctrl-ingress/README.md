@@ -79,9 +79,8 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
 
 2. Copy and paste the following commands:     
 
-    ``kubectl create -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml``  
+    ``kubectl create -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/bigip-ctlr-clusterrole.yaml``  
 
-    ``kubectl create serviceaccount bigip-ctlr -n kube-system``   
     ``kubectl create -f cis-deployment.yaml``  
 
     ``#Create application pods and services ``  
@@ -125,8 +124,7 @@ Go to the sub directory [*ingresslink*](https://github.com/laul7klau/kubernetes-
     ``kubectl delete -f f5-hello-world-deployment.yaml``  
     ``kubectl delete -f f5-hello-world-service.yaml``   
     ``kubectl delete -f cis-deployment.yaml``  
-    ``kubectl delete -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/k8s-rbac.yaml``  
-    ``kubectl delete serviceaccount bigip-ctlr -n kube-system``  
+    ``kubectl delete -f https://raw.githubusercontent.com/laul7klau/kubernetes-aws/main/bigip-ctrl-ingress/config/bigip-ctlr-clusterrole.yaml``  
     ``kubectl delete secret f5-bigip-ctlr-login -n kube-system``  
  
 2. On AWS portal, destroy the BIG-IP stack.  
