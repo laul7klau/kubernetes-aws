@@ -67,7 +67,7 @@ This is a step by step guide to deploy BIG-IP Container Ingress Service, CIS. Th
    2. Select Name of BIG-IP instance.  
    3. Select Actions > Security > Change Security Group
    4. Search for either of the **node** security group (depending on whether you used eksctl or kops to deploy):
-      - **eksctl**: eksctl-xxx-cluster-ClusterSharedNodeSecurityGroup-xxx
+      - **eksctl**: eksctl-xxx-nodegroup-nodegrp-xxx and eksctl-xxx-cluster-ClusterSharedNodeSecurityGroup-xxx
       - **kops**: nodes.xxx.k8s.local
    5. Add Security group. 
    6. Save.
