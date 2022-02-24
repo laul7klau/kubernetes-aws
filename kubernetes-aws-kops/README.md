@@ -63,7 +63,10 @@ For the explanation on the commands, refer to [Creating a cluster](https://kuber
    ``kops update cluster --name $NAME --yes --admin``   
    ``kops validate cluster --wait 10m``   
    
-   **Note**: If you encounter the error, "unexpected error during validation: error listing nodes: Unauthorized", run the following command:  
+   **Note**: If you encounter errors when running **kubectl**, E.g:  
+   - "unexpected error during validation: error listing nodes: Unauthorized"   
+   - "error: You must be logged in to the server (Unauthorized)"   
+    run the following command:  
    ``kops export kubecfg --admin``  
    For more information, refer to [stackoverflow link](https://stackoverflow.com/questions/66341494/kops-1-19-reports-error-unauthorized-when-interfacing-with-aws-cluster).  
 
