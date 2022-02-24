@@ -55,10 +55,10 @@ For F5 Ingress link, the BIG-IP CIS must run in Custom Resource Mode, CRD mode.
 NGINX ingress controller, BIG-IP CIS, BIG-IP instance and F5 Ingress link are deployed!
 
 # Verification:
-- In the BIG-IP instance, 2 virtual servers (ports 80, 443) should be created with 2 pools (80, 443). 
+- In the BIG-IP instance, 2 virtual servers (ports 80, 443) should be created with 2 pools (80, 443) in the **cispartition**.  
   - Each VS corresponds to the services declared in *'nodeport.yaml'* when creating the nginx-ingress controller. The selector in ingresslink.yaml must match the *'label'* in *'nodeport.yaml'*
   - The BIG-IP is in SSL passthrough mode where the VS does not have ssl profiles. SSL is terminated at the NGINX Ingress controller. 
-- Access http://cafe.example.com/coffee and https://cafe.example.com/tea, where cafe.example.com is matched to the aws external IP of the BIG-IP instance in the host file. The coffee and tea app deployed with the NGINX ingress controller should display.
+- Access http://cafe.example.com/coffee and https://cafe.example.com/tea from a browser, where cafe.example.com is matched to the aws external IP of the BIG-IP instance in the OS host file. The coffee and tea app deployed with the NGINX ingress controller should display.
 
 # Destroy:
 1. Download and run the *delete-all.sh* OR copy and paste its commands.   
